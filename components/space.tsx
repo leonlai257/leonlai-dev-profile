@@ -97,15 +97,17 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
 
             <Planets />
 
-            <Stars
-                radius={60}
-                depth={60}
-                count={4000}
-                factor={4}
-                saturation={0}
-                fade
-                speed={2}
-            />
+            {isTraveling || (
+                <Stars
+                    radius={60}
+                    depth={60}
+                    count={4000}
+                    factor={4}
+                    saturation={0}
+                    fade
+                    speed={2}
+                />
+            )}
 
             <Title text={'WELCOME!'} />
         </group>
