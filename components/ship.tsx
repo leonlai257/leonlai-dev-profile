@@ -1,18 +1,17 @@
-import React, { useRef } from 'react';
-import { ThreeElements, useLoader } from '@react-three/fiber';
-import { useGLTF, useTexture, Trail } from '@react-three/drei';
-import { TextureLoader } from 'three/src/loaders/TextureLoader';
+import { useGLTF, useScroll } from '@react-three/drei';
+import { useRef } from 'react';
 import * as THREE from 'three';
 import Rig from './rig';
 
-const SpaceShip = (props: ThreeElements['mesh']) => {
+const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
     const { nodes, materials } = useGLTF('/Striker.gltf');
+    const scroll = useScroll();
     // const materials = useTexture({ map: '/Striker_Blue.png' });
 
     const spaceship = useRef<THREE.Group>(null!);
 
     return (
-        <Rig>
+        <Rig isTraveling={isTraveling}>
             <group ref={spaceship} rotation={[0, Math.PI, 0]} dispose={null}>
                 <mesh
                     receiveShadow

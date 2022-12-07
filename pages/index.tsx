@@ -1,4 +1,9 @@
-import { PerspectiveCamera, ScrollControls } from '@react-three/drei';
+import {
+    PerspectiveCamera,
+    ScrollControls,
+    useScroll,
+} from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import type { NextPage } from 'next';
 import { useRef } from 'react';
 import SpaceShip from '../components/ship';
@@ -6,7 +11,13 @@ import Space from '../components/space';
 
 const LusionClone: NextPage = () => {
     const camera = useRef();
-    const ship = useRef();
+    const scroll = useScroll();
+    let isTraveling = true;
+
+    useFrame(() => {
+        isTraveling = scroll?.visible(1 / 2, 2 / 2) ? false : true;
+        // console.log(scroll);
+    });
 
     return (
         <>
@@ -24,9 +35,9 @@ const LusionClone: NextPage = () => {
                     far={1000}
                     position={[-80, 0, 0]}
                     rotation={[0, Math.PI + Math.PI / 2, 0]}>
-                    <SpaceShip />
+                    <SpaceShip isTraveling={isTraveling} />
                 </PerspectiveCamera>
-                <Space />
+                <Space isTraveling={isTraveling} />
             </ScrollControls>
         </>
     );

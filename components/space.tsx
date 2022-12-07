@@ -24,7 +24,7 @@ const colors = [
     },
 ];
 
-const Space = () => {
+const Space = ({ isTraveling }: { isTraveling: boolean }) => {
     const composer = useRef() as any;
 
     const scroll = useScroll();
@@ -71,7 +71,7 @@ const Space = () => {
     useFrame(() => {
         const r1 = scroll.range(0 / 2, 2 / 2);
         const text1 = scroll.visible(1 / 2, 2 / 2);
-        space.current.position.x = 20 - r1 * 100;
+        space.current.position.x = 0 - r1 * 200;
         // welcomeText.current.visible = text1 || false;
     });
 
@@ -81,17 +81,15 @@ const Space = () => {
                 <unrealBloomPass threshold={0.62} strength={5} radius={1} />
             </effectComposer> */}
 
-            <group>
-                {hyperLight.map((hyperLight, index) => {
-                    return (
-                        <HyperLight
-                            key={index}
-                            meshProps={hyperLight.meshProps}
-                            material={hyperLight.material}
-                        />
-                    );
-                })}
-            </group>
+            {hyperLight.map((hyperLight, index) => {
+                return (
+                    <HyperLight
+                        key={index}
+                        meshProps={hyperLight.meshProps}
+                        material={hyperLight.material}
+                    />
+                );
+            })}
 
             {comets.map((comet, index) => {
                 return <Comets key={index} position={comet.position} />;
@@ -100,8 +98,8 @@ const Space = () => {
             <Planets />
 
             <Stars
-                radius={40}
-                depth={50}
+                radius={60}
+                depth={60}
                 count={4000}
                 factor={4}
                 saturation={0}
