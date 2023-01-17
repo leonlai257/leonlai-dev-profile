@@ -1,15 +1,14 @@
-import { Stars, useScroll } from '@react-three/drei';
-import { extend, useFrame } from '@react-three/fiber';
-import { EffectComposer } from '@react-three/postprocessing';
+import { Effects, Stars, useScroll } from '@react-three/drei';
+import { extend, useFrame, useThree } from '@react-three/fiber';
 import { useRef } from 'react';
 import * as THREE from 'three';
 import { UnrealBloomPass } from 'three-stdlib';
+import Title from './centerText';
 import Comets, { CometProps } from './comets';
 import HyperLight, { HyperLightProps } from './hyperlight';
 import Planets from './planets';
-import Title from './title';
 
-extend({ EffectComposer, UnrealBloomPass });
+extend({ UnrealBloomPass });
 
 const colors = [
     {
@@ -25,11 +24,8 @@ const colors = [
 ];
 
 const Space = ({ isTraveling }: { isTraveling: boolean }) => {
-    const composer = useRef() as any;
-
     const scroll = useScroll();
     const space = useRef<THREE.Group>(null!);
-    const welcomeText = useRef(null!);
 
     let hyperLight: HyperLightProps[] = [];
     const lightCount = 2000;
@@ -53,7 +49,7 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
     }
 
     let comets: CometProps[] = [];
-    const cometCount = 5;
+    const cometCount = 2;
     for (let i = 0; i < cometCount; i++) {
         comets.push({
             position: new THREE.Vector3(
@@ -70,17 +66,16 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
 
     useFrame(() => {
         const r1 = scroll.range(0 / 2, 2 / 2);
-        const text1 = scroll.visible(1 / 2, 2 / 2);
         space.current.position.x = 0 - r1 * 200;
-        // welcomeText.current.visible = text1 || false;
     });
 
     return (
         <group ref={space}>
-            {/* <effectComposer ref={composer} args={[gl]}>
+            <Effects disableGamma>
                 <unrealBloomPass threshold={0.62} strength={5} radius={1} />
-            </effectComposer> */}
+            </Effects>
 
+            {/* To be disabled after entering some other instance*/}
             {hyperLight.map((hyperLight, index) => {
                 return (
                     <HyperLight
@@ -91,13 +86,13 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                 );
             })}
 
-            {comets.map((comet, index) => {
-                return <Comets key={index} position={comet.position} />;
-            })}
+            <Planets groupProps={{}} />
 
-            <Planets />
-
-            {isTraveling || (
+            {isTraveling ? (
+                comets.map((comet, index) => {
+                    return <Comets key={index} position={comet.position} />;
+                })
+            ) : (
                 <Stars
                     radius={60}
                     depth={60}
@@ -109,7 +104,10 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                 />
             )}
 
-            <Title text={'WELCOME!'} />
+            <Title
+                title={'WELCOME TO SPACE TRAVEL'}
+                subText={'Use scroll to continue...'}
+            />
         </group>
     );
 };

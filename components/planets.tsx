@@ -1,6 +1,7 @@
-import { useTexture } from '@react-three/drei';
-import { ThreeElements } from '@react-three/fiber';
-import { useState } from 'react';
+import { useCursor, useScroll, useTexture } from '@react-three/drei';
+import { ThreeElements, useFrame } from '@react-three/fiber';
+import { useRef, useState } from 'react';
+import { Event, Intersection, Object3D } from 'three';
 
 interface PlanetProps {
     meshProps: ThreeElements['mesh'];
@@ -12,16 +13,44 @@ function ImageMaterial({ url }: { url: string }) {
     return <meshBasicMaterial map={texture} toneMapped={false} />;
 }
 
-const PlanetObject = (props: PlanetProps) => {
+const PlanetObject = ({
+    props,
+    size,
+}: {
+    props: PlanetProps;
+    size: number;
+}) => {
+    const [hovered, setHoverStatus] = useState(false);
+    const [clicked, setClickStatus] = useState(false);
+    useCursor(hovered);
+
     return (
-        <mesh {...props.meshProps}>
-            <sphereGeometry args={[1]} />
-            <ImageMaterial url={props.texture} />
+        <mesh
+            {...props.meshProps}
+            onClick={(e) => {
+                e.stopPropagation(), setClickStatus(!clicked);
+            }}
+            onPointerOver={(e) => (e.stopPropagation(), setHoverStatus(true))}
+            onPointerOut={(e) => setHoverStatus(false)}>
+            <sphereGeometry args={[clicked ? 0.5 : size]} />
+            {hovered ? (
+                <meshBasicMaterial color="yellow" />
+            ) : (
+                <ImageMaterial url={props.texture} />
+            )}
         </mesh>
     );
 };
 
-const Planets = (props: ThreeElements['group']) => {
+const Planets = ({ groupProps }: { groupProps: ThreeElements['group'] }) => {
+    const [{ objects, cycle }, setObjectCycle] = useState<{
+        objects: Intersection<Object3D<Event>>[];
+        cycle: number;
+    }>({
+        objects: [],
+        cycle: 0,
+    });
+
     let planets: PlanetProps[] = [
         {
             meshProps: {
@@ -38,14 +67,28 @@ const Planets = (props: ThreeElements['group']) => {
             texture: '/Tropical.png',
         },
     ];
+
+    const ref = useRef<THREE.Group>(null!);
+    const scroll = useScroll();
+    const [size, setSize] = useState(1);
+
+    useFrame(() => {
+        setSize(scroll.range(0 / 2, 1 / 2));
+    });
+
     return (
-        <group {...props}>
+        <group ref={ref} {...groupProps}>
             {planets.map((planet, index) => {
                 return (
                     <PlanetObject
                         key={index}
-                        meshProps={planet.meshProps}
-                        texture={planet.texture}
+                        props={{
+                            meshProps: {
+                                ...planet.meshProps,
+                            },
+                            texture: planet.texture,
+                        }}
+                        size={size}
                     />
                 );
             })}
