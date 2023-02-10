@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { UnrealBloomPass } from 'three-stdlib';
 import Title from './centerText';
 import Comets, { CometProps } from './comets';
+import DemoPlane from './demoPlane';
 import HyperLight, { HyperLightProps } from './hyperlight';
 import Planets from './planets';
 
@@ -71,12 +72,19 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
 
     return (
         <group ref={space}>
-            <Effects disableGamma>
+            {/* <Effects disableGamma>
                 <unrealBloomPass threshold={0.62} strength={5} radius={1} />
-            </Effects>
+            </Effects> */}
+            <DemoPlane groupProps={{}} />
+            <DemoPlane
+                groupProps={{
+                    scale: [0.5, 0.5, 0.5],
+                    position: [-5, 0, 0],
+                }}
+            />
 
             {/* To be disabled after entering some other instance*/}
-            {hyperLight.map((hyperLight, index) => {
+            {/* {hyperLight.map((hyperLight, index) => {
                 return (
                     <HyperLight
                         key={index}
@@ -84,15 +92,16 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                         material={hyperLight.material}
                     />
                 );
-            })}
+            })} */}
 
             <Planets groupProps={{}} />
 
             {isTraveling ? (
-                comets.map((comet, index) => {
-                    return <Comets key={index} position={comet.position} />;
-                })
+                <></>
             ) : (
+                // comets.map((comet, index) => {
+                //     return <Comets key={index} position={comet.position} />;
+                // })
                 <Stars
                     radius={60}
                     depth={60}
