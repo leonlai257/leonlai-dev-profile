@@ -21,6 +21,7 @@ export const {
             roboto: '"Roboto", sans-serif',
             conthrax: '"Conthrax", sans-serif',
             boston: '"Boston Traffic", "Noto Sans TC", sans-serif',
+            ubuntu: '"Ubuntu", sans-serif',
         },
         colors: {
             bgPrimary: '#1a1a1a',
@@ -480,7 +481,7 @@ export const globalStyles = globalCss({
         fontFamily: 'inherit',
     },
     'html, body': {
-        fontFamily: '$mono',
+        fontFamily: '$ubuntu',
         color: 'white',
         backgroundColor: '$background',
         margin: '0',
@@ -502,28 +503,23 @@ export const globalStyles = globalCss({
     },
     '@font-face': [
         {
-            fontFamily: 'Boston Traffic',
-            src: `local("Boston Traffic"), url("/fonts/boston.ttf")`,
+            fontFamily: 'Ubuntu',
+            src: `local("Ubuntu"), url("/fonts/Ubuntu-Bold.ttf"), url("/fonts/Ubuntu-Bold.woff"), url("/fonts/Ubuntu-Bold.woff2"), url("/fonts/Ubuntu-Bold.eot")`,
+            fontWeight: 'bold',
+            fontStyle: 'normal',
+        },
+        {
+            fontFamily: 'Ubuntu',
+            src: `local("Ubuntu"), url("/fonts/Ubuntu-Regular.ttf"), url("/fonts/Ubuntu-Regular.woff"), url("/fonts/Ubuntu-Regular.woff2"), url("/fonts/Ubuntu-Regular.eot")`,
+
             fontWeight: 'normal',
             fontStyle: 'normal',
         },
         {
-            fontFamily: 'Conthrax',
-            src: `local("Conthrax"), url("/fonts/Conthrax_Regular.ttf")`,
-            fontWeight: 'normal',
+            fontFamily: 'Ubuntu',
+            src: `local("Ubuntu"), url("/fonts/Ubuntu-Light.ttf"), url("/fonts/Ubuntu-Light.woff"), url("/fonts/Ubuntu-Light.woff2"), url("/fonts/Ubuntu-Light.eot")`,
+            fontWeight: 'light',
             fontStyle: 'normal',
-        },
-        {
-            fontFamily: 'Conthrax',
-            src: `local("Conthrax"), url("/fonts/Conthrax_Bold.ttf")`,
-            fontWeight: 700,
-            fontStyle: 'normal',
-        },
-        {
-            fontFamily: 'Conthrax',
-            src: `local("Conthrax"), url("/fonts/Conthrax_Bold_Italic.ttf")`,
-            fontWeight: 700,
-            fontStyle: 'italic',
         },
     ],
 });

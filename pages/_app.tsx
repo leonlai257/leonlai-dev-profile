@@ -1,10 +1,14 @@
 import { ScrollControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import { globalStyles } from '@src/stitches.config';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import '../styles/globals.css';
+import { useEffect } from 'react';
 
 function App({ Component, pageProps }: AppProps) {
+    useEffect(() => {
+        globalStyles();
+    }, []);
     return (
         <>
             <Head>

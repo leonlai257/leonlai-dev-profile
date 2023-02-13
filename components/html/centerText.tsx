@@ -24,7 +24,7 @@ const Welcome = (props: TitleProps) => {
                     props.subText.substring(0, displaySubText.length + 1)
                 );
             }
-        }, 200);
+        }, 150);
 
         return () => clearInterval(interval);
     });

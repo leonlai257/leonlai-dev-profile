@@ -2,7 +2,7 @@ import { PerspectiveCamera, useScroll } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import type { NextPage } from 'next';
 import { useRef, useState } from 'react';
-import SpaceShip from '../components/ship';
+import SpaceShip from '../components/objects/ship';
 import Space from '../components/space';
 
 const Main: NextPage = () => {

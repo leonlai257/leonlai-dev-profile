@@ -1,65 +1,9 @@
-import { shaderMaterial, useGLTF, useScroll } from '@react-three/drei';
-import {
-    extend,
-    ThreeElements,
-    useFrame,
-    useLoader,
-    ReactThreeFiber,
-} from '@react-three/fiber';
-import { useEffect, useRef, useState } from 'react';
+import { useGLTF, useScroll } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+import { useRef, useState } from 'react';
 import * as THREE from 'three';
-import { jetEngineFragment, jetEngineVertex } from '../shaders/jetEngineShader';
-import Rig from './rig';
-
-const JetEngineMaterial = shaderMaterial(
-    {
-        blending: THREE.AdditiveBlending,
-        uTime: 0,
-        uColor: new THREE.Color(0.0, 0.0, 0.0),
-        uTexture: new THREE.Texture(),
-        uTextureTiling: 3.2,
-        uThrust: 0.8,
-    },
-    jetEngineVertex,
-    jetEngineFragment
-);
-
-extend({ JetEngineMaterial });
-
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            jetEngineMaterial: ReactThreeFiber.Object3DNode<
-                THREE.ShaderMaterial,
-                typeof JetEngineMaterial
-            >;
-        }
-    }
-}
-
-const JetEngine = (props: ThreeElements['mesh']) => {
-    const ref = useRef<THREE.ShaderMaterial>(null!);
-    useFrame(({ clock }) => {
-        ref.current.uniforms.uTime.value = clock.getElapsedTime();
-    });
-
-    const [noiseMap] = useLoader(THREE.TextureLoader, ['/noiseTexture.jpg']);
-
-    noiseMap.wrapT = THREE.RepeatWrapping;
-    noiseMap.wrapS = THREE.RepeatWrapping;
-
-    useEffect(() => {
-        ref.current.uniforms.uTexture.value = noiseMap;
-        ref.current.uniforms.uColor.value = new THREE.Color(4, 0.5, 2.4);
-    });
-
-    return (
-        <mesh {...props} rotation={[Math.PI / 2, 0, 0]}>
-            <coneBufferGeometry args={[0.18, 1, 32]} />
-            <jetEngineMaterial ref={ref} />
-        </mesh>
-    );
-};
+import JetEngine from '../effects/jetEngine';
+import Rig from '../effects/rig';
 
 const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
     const { nodes, materials } = useGLTF('/Striker.gltf');

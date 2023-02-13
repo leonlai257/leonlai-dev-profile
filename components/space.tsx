@@ -3,10 +3,10 @@ import { extend, useFrame, useThree } from '@react-three/fiber';
 import { useRef } from 'react';
 import * as THREE from 'three';
 import { UnrealBloomPass } from 'three-stdlib';
-import Title from './centerText';
-import Comets, { CometProps } from './comets';
-import HyperLight, { HyperLightProps } from './hyperlight';
-import Planets from './planets';
+import Title from './html/centerText';
+import Comets, { CometProps } from './objects/comets';
+import HyperLight, { HyperLightProps } from './objects/hyperlight';
+import Planets from './objects/planets';
 
 extend({ UnrealBloomPass });
 
@@ -79,9 +79,9 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
 
     return (
         <group ref={space}>
-            <Effects disableGamma>
+            {/* <Effects disableGamma>
                 <unrealBloomPass threshold={0.7} strength={5} radius={1} />
-            </Effects>
+            </Effects> */}
 
             {/* To be disabled after entering some other instance*/}
             {hyperLight.map((hyperLight, index) => {
