@@ -1,16 +1,12 @@
 import { useCursor, useScroll, useTexture } from '@react-three/drei';
 import { ThreeElements, useFrame } from '@react-three/fiber';
+import ImageMaterial from 'materials/imageMaterial';
 import { useRef, useState } from 'react';
 import { Event, Intersection, Object3D } from 'three';
 
 interface PlanetProps {
     meshProps: ThreeElements['mesh'];
     texture: string;
-}
-
-function ImageMaterial({ url }: { url: string }) {
-    const texture = useTexture(url);
-    return <meshBasicMaterial map={texture} toneMapped={false} />;
 }
 
 const PlanetObject = ({
@@ -36,7 +32,7 @@ const PlanetObject = ({
             {hovered ? (
                 <meshBasicMaterial color="yellow" />
             ) : (
-                <ImageMaterial url={props.texture} />
+                <ImageMaterial url={props.texture} transparent={false} />
             )}
         </mesh>
     );

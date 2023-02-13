@@ -19,7 +19,6 @@ const Rig = ({
 
     useFrame(() => {
         if (isTraveling) {
-            // Camera movement base on mouse position
             camera.position.lerp(
                 vec.set(
                     camera.position.x,

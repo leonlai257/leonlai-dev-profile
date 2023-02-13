@@ -23,6 +23,14 @@ const colors = [
     },
 ];
 
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            unrealBloomPass: any;
+        }
+    }
+}
+
 const Space = ({ isTraveling }: { isTraveling: boolean }) => {
     const scroll = useScroll();
     const space = useRef<THREE.Group>(null!);
@@ -72,7 +80,7 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
     return (
         <group ref={space}>
             <Effects disableGamma>
-                <unrealBloomPass threshold={0.62} strength={5} radius={1} />
+                <unrealBloomPass threshold={0.7} strength={5} radius={1} />
             </Effects>
 
             {/* To be disabled after entering some other instance*/}
@@ -105,7 +113,8 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
             )}
 
             <Title
-                title={'WELCOME TO SPACE TRAVEL'}
+                title={`I am Leon Lai, 
+                   a full stack developer passionate in building `}
                 subText={'Use scroll to continue...'}
             />
         </group>

@@ -1,7 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
-import { ThreeElements, useFrame, useLoader } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
+import { useEffect, useState } from 'react';
 
 interface TitleProps {
     title: string;
@@ -36,10 +34,22 @@ const Welcome = (props: TitleProps) => {
             as="div"
             center
             style={{
-                whiteSpace: 'nowrap',
+                textAlign: 'center',
+                left: 0,
+                right: 0,
+                margin: 'auto',
+                width: '100vw',
+                whiteSpace: 'pre-wrap',
             }}>
-            <h1>{displayTitle}</h1>
-            <h4 style={{ justifySelf: 'right' }}>{displaySubText}</h4>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                }}>
+                <h1 style={{}}>{displayTitle}</h1>
+                <h4 style={{}}>{displaySubText}</h4>
+            </div>
         </Html>
     );
 };
