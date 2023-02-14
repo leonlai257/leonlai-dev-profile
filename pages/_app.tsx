@@ -18,7 +18,7 @@ function App({ Component, pageProps }: AppProps) {
                     content="Leon Lai's personal website"
                 />
                 <link rel="icon" href="/favicon.ico" />
-            </Head>{' '}
+            </Head>
             <div
                 style={{
                     position: 'absolute',
