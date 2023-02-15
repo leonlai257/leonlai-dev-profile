@@ -1,12 +1,12 @@
 import { Effects, Stars, useScroll } from '@react-three/drei';
 import { extend, useFrame, useThree } from '@react-three/fiber';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 import * as THREE from 'three';
 import { UnrealBloomPass } from 'three-stdlib';
 import Title from './html/centerText';
 import Comets, { CometProps } from './objects/comets';
 import HyperLight, { HyperLightProps } from './objects/hyperlight';
-import Planets from './objects/planets';
+import Planets, { PlanetProps } from './objects/planets';
 
 extend({ UnrealBloomPass });
 
@@ -20,6 +20,27 @@ const colors = [
         color: 0xb08ef5,
         emissive: 0xb08ef5,
         emissiveIntensity: 1,
+    },
+];
+
+const planetsConfig: PlanetProps[] = [
+    {
+        groupProps: {
+            position: [160, 0, 0],
+            scale: [10, 10, 10],
+        },
+        meshProps: {},
+        texture: '/Terrestrial.png',
+        text: 'PROFILE',
+    },
+    {
+        groupProps: {
+            position: [210, 30, 40],
+            scale: [6, 6, 6],
+        },
+        meshProps: {},
+        texture: '/Tropical.png',
+        text: 'SKILLS',
     },
 ];
 
@@ -79,9 +100,11 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
 
     return (
         <group ref={space}>
-            {/* <Effects disableGamma>
-                <unrealBloomPass threshold={0.7} strength={5} radius={1} />
-            </Effects> */}
+            {/* <Suspense fallback={null}>
+                <Effects disableGamma>
+                    <unrealBloomPass threshold={0.7} strength={5} radius={1} />
+                </Effects>
+            </Suspense> */}
 
             {/* To be disabled after entering some other instance*/}
             {hyperLight.map((hyperLight, index) => {
@@ -94,7 +117,7 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                 );
             })}
 
-            <Planets groupProps={{}} />
+            <Planets planets={planetsConfig} />
 
             {isTraveling ? (
                 comets.map((comet, index) => {
@@ -102,7 +125,7 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                 })
             ) : (
                 <Stars
-                    radius={60}
+                    radius={65}
                     depth={60}
                     count={4000}
                     factor={4}

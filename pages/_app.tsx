@@ -34,7 +34,7 @@ function App({ Component, pageProps }: AppProps) {
                     <ScrollControls
                         pages={2}
                         distance={1}
-                        damping={5}
+                        damping={1}
                         horizontal={false}
                         infinite={false}>
                         <Component {...pageProps} />

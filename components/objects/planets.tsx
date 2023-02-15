@@ -1,34 +1,31 @@
 import { useCursor, useScroll, useTexture } from '@react-three/drei';
 import { ThreeElements, useFrame } from '@react-three/fiber';
+import TextRing from 'components/effects/textRing';
 import ImageMaterial from 'materials/imageMaterial';
 import { useRef, useState } from 'react';
 import { Event, Intersection, Object3D } from 'three';
 
-interface PlanetProps {
+interface PlanetObjectProps {
     meshProps: ThreeElements['mesh'];
     texture: string;
 }
 
-const PlanetObject = ({
-    props,
-    size,
-}: {
-    props: PlanetProps;
-    size: number;
-}) => {
+export interface PlanetProps extends PlanetObjectProps {
+    groupProps: ThreeElements['group'];
+    text: string;
+}
+
+const PlanetObject = ({ props }: { props: PlanetObjectProps }) => {
     const [hovered, setHoverStatus] = useState(false);
-    const [clicked, setClickStatus] = useState(false);
+
     useCursor(hovered);
 
     return (
         <mesh
             {...props.meshProps}
-            onClick={(e) => {
-                e.stopPropagation(), setClickStatus(!clicked);
-            }}
             onPointerOver={(e) => (e.stopPropagation(), setHoverStatus(true))}
             onPointerOut={(e) => setHoverStatus(false)}>
-            <sphereGeometry args={[clicked ? 0.5 : size]} />
+            <sphereGeometry />
             {hovered ? (
                 <meshBasicMaterial color="yellow" />
             ) : (
@@ -38,54 +35,37 @@ const PlanetObject = ({
     );
 };
 
-const Planets = ({ groupProps }: { groupProps: ThreeElements['group'] }) => {
-    const [{ objects, cycle }, setObjectCycle] = useState<{
-        objects: Intersection<Object3D<Event>>[];
-        cycle: number;
-    }>({
-        objects: [],
-        cycle: 0,
-    });
-
-    let planets: PlanetProps[] = [
-        {
-            meshProps: {
-                position: [160, 0, 0],
-                scale: [10, 10, 10],
-            },
-            texture: '/Terrestrial.png',
-        },
-        {
-            meshProps: {
-                position: [210, 30, 40],
-                scale: [6, 6, 6],
-            },
-            texture: '/Tropical.png',
-        },
-    ];
-
+const Planets = ({ planets }: { planets: PlanetProps[] }) => {
     const ref = useRef<THREE.Group>(null!);
     const scroll = useScroll();
     const [size, setSize] = useState(1);
+    const [clicked, setClickStatus] = useState(false);
 
     useFrame(() => {
         setSize(scroll.range(0 / 2, 1 / 2));
     });
 
     return (
-        <group ref={ref} {...groupProps}>
+        <group ref={ref}>
             {planets.map((planet, index) => {
                 return (
-                    <PlanetObject
+                    <group
                         key={index}
-                        props={{
-                            meshProps: {
-                                ...planet.meshProps,
-                            },
-                            texture: planet.texture,
-                        }}
-                        size={size}
-                    />
+                        {...planet.groupProps}
+                        scale={size * 5}
+                        onClick={(e) => {
+                            e.stopPropagation(), setClickStatus(!clicked);
+                        }}>
+                        <TextRing text={planet.text} />
+                        <PlanetObject
+                            props={{
+                                meshProps: {
+                                    ...planet.meshProps,
+                                },
+                                texture: planet.texture,
+                            }}
+                        />
+                    </group>
                 );
             })}
         </group>
