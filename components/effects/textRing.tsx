@@ -23,20 +23,20 @@ const ccccc = (children: string, color: string) => {
     return canvas;
 };
 
-const TextRing = ({ text }: { text: string }) => {
+const TextRing = ({ text, hovered }: { text: string; hovered: boolean }) => {
     const canvas = useMemo(() => {
         return ccccc(text, 'white');
     }, [text]);
 
     const backCanvas = useMemo(() => {
-        return ccccc(text, 'hotpink');
+        return ccccc(text, 'purple');
     }, [text]);
 
-    const texture = useRef<THREE.CanvasTexture>(null!);
-    const texture2 = useRef<THREE.CanvasTexture>(null!);
-    useFrame(({ clock }) => {
-        texture.current.offset.x = clock.getElapsedTime() / 2;
-        texture2.current.offset.x = clock.getElapsedTime() / 2;
+    const frontTexture = useRef<THREE.CanvasTexture>(null!);
+    const backTexture = useRef<THREE.CanvasTexture>(null!);
+    useFrame(() => {
+        frontTexture.current.offset.x += hovered ? -0.012 : 0.006;
+        backTexture.current.offset.x += hovered ? -0.012 : 0.006;
     });
 
     const cylArgs = [1, 1, 1, 64, 1, true] as
@@ -57,6 +57,7 @@ const TextRing = ({ text }: { text: string }) => {
             <Cylinder args={cylArgs}>
                 <meshStandardMaterial
                     transparent
+                    blending={THREE.AdditiveBlending}
                     attach="material"
                     side={THREE.FrontSide}
                     depthTest={false}
@@ -66,7 +67,7 @@ const TextRing = ({ text }: { text: string }) => {
                         repeat={new Vector2(4, 1)}
                         image={canvas}
                         premultiplyAlpha
-                        ref={texture}
+                        ref={frontTexture}
                         wrapS={THREE.RepeatWrapping}
                         wrapT={THREE.RepeatWrapping}
                         onUpdate={(s) => (s.needsUpdate = true)}
@@ -76,6 +77,7 @@ const TextRing = ({ text }: { text: string }) => {
 
             <Cylinder args={cylArgs}>
                 <meshStandardMaterial
+                    blending={THREE.AdditiveBlending}
                     attach="material"
                     side={THREE.BackSide}
                     depthTest={false}
@@ -85,7 +87,7 @@ const TextRing = ({ text }: { text: string }) => {
                         repeat={new Vector2(8, 1)}
                         image={backCanvas}
                         premultiplyAlpha
-                        ref={texture2}
+                        ref={backTexture}
                         wrapS={THREE.RepeatWrapping}
                         wrapT={THREE.RepeatWrapping}
                         onUpdate={(s) => (s.needsUpdate = true)}

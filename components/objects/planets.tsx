@@ -15,16 +15,15 @@ export interface PlanetProps extends PlanetObjectProps {
     text: string;
 }
 
-const PlanetObject = ({ props }: { props: PlanetObjectProps }) => {
-    const [hovered, setHoverStatus] = useState(false);
-
-    useCursor(hovered);
-
+const PlanetObject = ({
+    props,
+    hovered,
+}: {
+    props: PlanetObjectProps;
+    hovered: boolean;
+}) => {
     return (
-        <mesh
-            {...props.meshProps}
-            onPointerOver={(e) => (e.stopPropagation(), setHoverStatus(true))}
-            onPointerOut={(e) => setHoverStatus(false)}>
+        <mesh {...props.meshProps}>
             <sphereGeometry />
             {hovered ? (
                 <meshBasicMaterial color="yellow" />
@@ -40,6 +39,9 @@ const Planets = ({ planets }: { planets: PlanetProps[] }) => {
     const scroll = useScroll();
     const [size, setSize] = useState(1);
     const [clicked, setClickStatus] = useState(false);
+    const [hovered, setHoverStatus] = useState(false);
+
+    useCursor(hovered);
 
     useFrame(() => {
         setSize(scroll.range(0 / 2, 1 / 2));
@@ -55,8 +57,12 @@ const Planets = ({ planets }: { planets: PlanetProps[] }) => {
                         scale={size * 5}
                         onClick={(e) => {
                             e.stopPropagation(), setClickStatus(!clicked);
-                        }}>
-                        <TextRing text={planet.text} />
+                        }}
+                        onPointerOver={(e) => (
+                            e.stopPropagation(), setHoverStatus(true)
+                        )}
+                        onPointerOut={(e) => setHoverStatus(false)}>
+                        <TextRing text={planet.text} hovered={hovered} />
                         <PlanetObject
                             props={{
                                 meshProps: {
@@ -64,6 +70,7 @@ const Planets = ({ planets }: { planets: PlanetProps[] }) => {
                                 },
                                 texture: planet.texture,
                             }}
+                            hovered={hovered}
                         />
                     </group>
                 );
