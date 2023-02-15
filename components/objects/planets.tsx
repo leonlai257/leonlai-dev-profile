@@ -1,9 +1,8 @@
-import { useCursor, useScroll, useTexture } from '@react-three/drei';
+import { useCursor, useScroll } from '@react-three/drei';
 import { ThreeElements, useFrame } from '@react-three/fiber';
 import TextRing from 'components/effects/textRing';
 import ImageMaterial from 'materials/imageMaterial';
 import { useRef, useState } from 'react';
-import { Event, Intersection, Object3D } from 'three';
 
 interface PlanetObjectProps {
     meshProps: ThreeElements['mesh'];
