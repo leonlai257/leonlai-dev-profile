@@ -1,3 +1,4 @@
+import { Cylinder } from '@react-three/drei';
 import { CylinderBufferGeometryProps, useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
@@ -38,54 +39,49 @@ const TextRing = ({ text, hovered }: { text: string; hovered: boolean }) => {
         backTexture.current.offset.x += hovered ? -0.012 : 0.006;
     });
 
-    const cylArgs: CylinderBufferGeometryProps = [1, 1, 1, 64, 1, true];
+    const cylArgs = [1, 1, 1, 64, 1, true];
 
     return (
         <group rotation-y={Math.PI / 4} rotation-x={-Math.PI / 16} scale={1.2}>
-            <mesh>
-                <cylinderBufferGeometry args={cylArgs}>
-                    <meshStandardMaterial
-                        transparent
-                        blending={THREE.AdditiveBlending}
-                        attach="material"
-                        side={THREE.FrontSide}
-                        depthTest={false}
-                        depthWrite={false}>
-                        <canvasTexture
-                            attach="map"
-                            repeat={new Vector2(4, 1)}
-                            image={canvas}
-                            premultiplyAlpha
-                            ref={frontTexture}
-                            wrapS={THREE.RepeatWrapping}
-                            wrapT={THREE.RepeatWrapping}
-                            onUpdate={(s) => (s.needsUpdate = true)}
-                        />
-                    </meshStandardMaterial>
-                </cylinderBufferGeometry>
-            </mesh>
-
-            <mesh>
-                <cylinderBufferGeometry args={cylArgs}>
-                    <meshStandardMaterial
-                        blending={THREE.AdditiveBlending}
-                        attach="material"
-                        side={THREE.BackSide}
-                        depthTest={false}
-                        depthWrite={false}>
-                        <canvasTexture
-                            attach="map"
-                            repeat={new Vector2(8, 1)}
-                            image={backCanvas}
-                            premultiplyAlpha
-                            ref={backTexture}
-                            wrapS={THREE.RepeatWrapping}
-                            wrapT={THREE.RepeatWrapping}
-                            onUpdate={(s) => (s.needsUpdate = true)}
-                        />
-                    </meshStandardMaterial>
-                </cylinderBufferGeometry>
-            </mesh>
+            <Cylinder args={cylArgs}>
+                <meshStandardMaterial
+                    transparent
+                    blending={THREE.AdditiveBlending}
+                    attach="material"
+                    side={THREE.FrontSide}
+                    depthTest={false}
+                    depthWrite={false}>
+                    <canvasTexture
+                        attach="map"
+                        repeat={new Vector2(4, 1)}
+                        image={canvas}
+                        premultiplyAlpha
+                        ref={frontTexture}
+                        wrapS={THREE.RepeatWrapping}
+                        wrapT={THREE.RepeatWrapping}
+                        onUpdate={(s) => (s.needsUpdate = true)}
+                    />
+                </meshStandardMaterial>
+            </Cylinder>
+            <Cylinder args={cylArgs}>
+                <meshStandardMaterial
+                    blending={THREE.AdditiveBlending}
+                    attach="material"
+                    side={THREE.BackSide}
+                    depthTest={false}
+                    depthWrite={false}>
+                    <canvasTexture
+                        attach="map"
+                        repeat={new Vector2(8, 1)}
+                        image={backCanvas}
+                        premultiplyAlpha
+                        ref={backTexture}
+                        wrapS={THREE.RepeatWrapping}
+                        wrapT={THREE.RepeatWrapping}
+                        onUpdate={(s) => (s.needsUpdate = true)}
+                    />
+                </meshStandardMaterial>
+            </Cylinder>
         </group>
     );
 };
