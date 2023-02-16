@@ -1,9 +1,9 @@
 import { Effects, Stars, useScroll } from '@react-three/drei';
 import { extend, useFrame, useThree } from '@react-three/fiber';
-import { Suspense, useRef } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { UnrealBloomPass } from 'three-stdlib';
-import Title from './html/centerText';
+import WelcomeText from './html/welcomeText';
 import Comets, { CometProps } from './objects/comets';
 import HyperLight, { HyperLightProps } from './objects/hyperlight';
 import Planets, { PlanetProps } from './objects/planets';
@@ -94,8 +94,8 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
     }
 
     useFrame(() => {
-        const r1 = scroll.range(0 / 2, 2 / 2);
-        space.current.position.x = 0 - r1 * 200;
+        const r2 = scroll.range(0 / 2, 2 / 2);
+        space.current.position.x = 0 - r2 * 200;
     });
 
     return (
@@ -135,7 +135,7 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                 />
             )}
 
-            <Title
+            <WelcomeText
                 title={`I am Leon Lai, 
                    a full stack developer passionate in building 3D websites.`}
                 subText={'Use scroll to continue...'}

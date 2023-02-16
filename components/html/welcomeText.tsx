@@ -1,32 +1,49 @@
-import { Html } from '@react-three/drei';
-import { useEffect, useState } from 'react';
+import { Html, useScroll } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+import { useEffect, useRef, useState } from 'react';
 
 interface TitleProps {
     title: string;
-    subText?: string;
+    subText: string;
 }
 
-const Welcome = (props: TitleProps) => {
+const WelcomeText = (props: TitleProps) => {
+    const scroll = useScroll();
+
+    const { title, subText } = props;
+
+    const displayRef = useRef<HTMLDivElement>(null!);
+
     const [displayTitle, setDisplayTitle] = useState<string>('');
     const [displaySubText, setDisplaySubText] = useState<string>('');
 
     useEffect(() => {
         const interval = setInterval(() => {
             if (displayTitle.length < props.title.length) {
-                setDisplayTitle(
-                    props.title.substring(0, displayTitle.length + 1)
-                );
+                setDisplayTitle(title.substring(0, displayTitle.length + 1));
             } else if (
                 props.subText !== undefined &&
                 displaySubText.length < props.subText.length
             ) {
                 setDisplaySubText(
-                    props.subText.substring(0, displaySubText.length + 1)
+                    subText.substring(0, displaySubText.length + 1)
                 );
             }
         }, 150);
 
         return () => clearInterval(interval);
+    });
+
+    const opacityOffset = 8;
+
+    useFrame(() => {
+        const r1 = scroll.range(0 / 2, 1 / 2);
+        if (r1 * opacityOffset < 1) {
+            displayRef.current.style.opacity = (
+                1 -
+                r1 * opacityOffset
+            ).toString();
+        }
     });
 
     return (
@@ -39,9 +56,11 @@ const Welcome = (props: TitleProps) => {
                 margin: 'auto',
                 width: '100vw',
                 whiteSpace: 'pre-wrap',
+                position: 'sticky',
             }}
             position={[0, 0, 0]}>
             <div
+                ref={displayRef}
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -54,4 +73,4 @@ const Welcome = (props: TitleProps) => {
     );
 };
 
-export default Welcome;
+export default WelcomeText;
