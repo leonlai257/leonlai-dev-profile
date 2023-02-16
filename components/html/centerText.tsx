@@ -31,7 +31,6 @@ const Welcome = (props: TitleProps) => {
 
     return (
         <Html
-            as="div"
             center
             style={{
                 textAlign: 'center',
@@ -40,7 +39,8 @@ const Welcome = (props: TitleProps) => {
                 margin: 'auto',
                 width: '100vw',
                 whiteSpace: 'pre-wrap',
-            }}>
+            }}
+            position={[0, 0, 0]}>
             <div
                 style={{
                     display: 'flex',

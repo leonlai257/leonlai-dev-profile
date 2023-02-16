@@ -102,7 +102,7 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
         <group ref={space}>
             {/* <Suspense fallback={null}>
                 <Effects disableGamma>
-                    <unrealBloomPass threshold={0.7} strength={5} radius={1} />
+                    <unrealBloomPass threshold={0.7} strength={1} radius={1} />
                 </Effects>
             </Suspense> */}
 
@@ -137,7 +137,7 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
 
             <Title
                 title={`I am Leon Lai, 
-                   a full stack developer passionate in building `}
+                   a full stack developer passionate in building 3D websites.`}
                 subText={'Use scroll to continue...'}
             />
         </group>

@@ -14,7 +14,7 @@ const ccccc = (children: string, color: string) => {
     context.fillStyle = 'transparent';
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    context.font = `bold ${fontSize}px -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif`;
+    context.font = `bold ${fontSize}px -apple-system, ubuntu, sans-serif`;
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillStyle = color;

@@ -17,7 +17,8 @@
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "three": "^0.146.0"
+    "three": "^0.146.0",
+    "wouter": "^2.10.0"
   },
   "devDependencies": {
     "@types/node": "18.11.9",
