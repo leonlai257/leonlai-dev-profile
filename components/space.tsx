@@ -136,9 +136,8 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
             )}
 
             <WelcomeText
-                title={`I am Leon Lai, 
-                   a full stack developer passionate in building 3D websites.`}
-                subText={'Use scroll to continue...'}
+                title={`Hey, I am Leon Lai, a full stack web developer based in Hong Kong. Building 3d websites and games is my passion. I am always exploring new technologies and equipped with extensive skills in Frontend, Backend, MR/AR, and more.`}
+                subText={'Scroll to learn more...'}
             />
         </group>
     );

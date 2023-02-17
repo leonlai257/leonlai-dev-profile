@@ -29,7 +29,7 @@ const WelcomeText = (props: TitleProps) => {
                     subText.substring(0, displaySubText.length + 1)
                 );
             }
-        }, 150);
+        }, 100);
 
         return () => clearInterval(interval);
     });
@@ -38,7 +38,7 @@ const WelcomeText = (props: TitleProps) => {
 
     useFrame(() => {
         const r1 = scroll.range(0 / 2, 1 / 2);
-        if (r1 * opacityOffset < 1) {
+        if (r1 * opacityOffset < 1 && displayRef.current !== null) {
             displayRef.current.style.opacity = (
                 1 -
                 r1 * opacityOffset
@@ -65,6 +65,8 @@ const WelcomeText = (props: TitleProps) => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
+                    margin: 'auto',
+                    width: '40%',
                 }}>
                 <h1 style={{}}>{displayTitle}</h1>
                 <h4 style={{}}>{displaySubText}</h4>
