@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { UnrealBloomPass } from 'three-stdlib';
 import WelcomeText from './html/welcomeText';
 import Comets, { CometProps } from './objects/comets';
+import DisplayScreen from './objects/displayScreen';
 import HyperLight, { HyperLightProps } from './objects/hyperlight';
 import Planets, { PlanetProps } from './objects/planets';
 
@@ -117,6 +118,12 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                 );
             })}
 
+            <DisplayScreen
+                groupProps={{
+                    position: [180, 20, 0],
+                }}
+            />
+
             <Planets planets={planetsConfig} />
 
             {isTraveling ? (
@@ -136,8 +143,11 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
             )}
 
             <WelcomeText
-                title={`Hey, I am Leon Lai, a full stack web developer based in Hong Kong. Building 3d websites and games is my passion. I am always exploring new technologies and equipped with extensive skills in Frontend, Backend, MR/AR, and more.`}
-                subText={'Scroll to learn more...'}
+                title={`Hey, I am Leon Lai, a full stack web developer based in Hong Kong.`}
+                subText={
+                    'Building 3d websites and games is my passion. I am always exploring new technologies and equipped with extensive skills in Frontend, Backend, MR/AR, and more.'
+                }
+                scrollText={'Scroll to learn more...'}
             />
         </group>
     );

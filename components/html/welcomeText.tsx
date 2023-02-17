@@ -5,28 +5,37 @@ import { useEffect, useRef, useState } from 'react';
 interface TitleProps {
     title: string;
     subText: string;
+    scrollText: string;
 }
 
 const WelcomeText = (props: TitleProps) => {
     const scroll = useScroll();
 
-    const { title, subText } = props;
+    const { title, subText, scrollText } = props;
 
     const displayRef = useRef<HTMLDivElement>(null!);
 
     const [displayTitle, setDisplayTitle] = useState<string>('');
     const [displaySubText, setDisplaySubText] = useState<string>('');
+    const [displayScrollText, setDisplayScrollText] = useState<string>('');
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (displayTitle.length < props.title.length) {
+            if (displayTitle.length < title.length) {
                 setDisplayTitle(title.substring(0, displayTitle.length + 1));
             } else if (
                 props.subText !== undefined &&
-                displaySubText.length < props.subText.length
+                displaySubText.length < subText.length
             ) {
                 setDisplaySubText(
                     subText.substring(0, displaySubText.length + 1)
+                );
+            } else if (
+                props !== undefined &&
+                displayScrollText.length < scrollText.length
+            ) {
+                setDisplayScrollText(
+                    scrollText.substring(0, displayScrollText.length + 1)
                 );
             }
         }, 100);
@@ -69,7 +78,8 @@ const WelcomeText = (props: TitleProps) => {
                     width: '40%',
                 }}>
                 <h1 style={{}}>{displayTitle}</h1>
-                <h4 style={{}}>{displaySubText}</h4>
+                <h2 style={{}}>{displaySubText}</h2>
+                <h4 style={{}}>{displayScrollText}</h4>
             </div>
         </Html>
     );
