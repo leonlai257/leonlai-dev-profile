@@ -29,7 +29,8 @@ const VideoScreen = (props: ScreenProps) => {
                 scale={[1, -1, 1]}
                 args={[7.75, 4.3, 1]}
                 position={[0, 0, 0.2]}
-                rotation={[Math.PI, 0, 0]}>
+                rotation={[Math.PI, 0, 0]}
+            >
                 <VideoMaterial url={path!} />
                 {/* <Suspense
                     fallback={

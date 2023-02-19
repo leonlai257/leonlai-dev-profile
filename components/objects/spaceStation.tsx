@@ -1,10 +1,15 @@
-import { Box, Plane, Text, useScroll } from "@react-three/drei";
-import { ThreeElements, useFrame } from "@react-three/fiber";
-import { useState } from "react";
-import { Euler } from "three";
+import { Box, Plane, Text, useScroll } from '@react-three/drei';
+import {
+    BoxBufferGeometryProps,
+    PlaneBufferGeometryProps,
+    ThreeElements,
+    useFrame,
+} from '@react-three/fiber';
+import { useState } from 'react';
+import { Euler } from 'three';
 
 export interface SpaceStationProps {
-    groupProps: ThreeElements["group"];
+    groupProps: ThreeElements['group'];
 }
 
 const defaultProps: SpaceStationProps = {
@@ -17,7 +22,7 @@ const SpaceStation = (props: SpaceStationProps) => {
     const [size, setSize] = useState(1);
     const scroll = useScroll();
 
-    const defaultSetting: ThreeElements["group"] = {
+    const defaultSetting: ThreeElements['group'] = {
         rotation: new Euler(0, -Math.PI / 2, 0),
         scale: 2,
     };
@@ -26,25 +31,42 @@ const SpaceStation = (props: SpaceStationProps) => {
         setSize(scroll.range(0 / 2, 1 / 2) * 2);
     });
 
-    const defaultBoxArgs = [16, 9, 1];
+    const defaultBoxArgs: BoxBufferGeometryProps = [16, 9, 1];
 
     return (
         <group {...groupProps}>
             <group {...defaultSetting} scale={size}>
                 <group position={[0, 0, 0.6]}>
-                    <Plane scale={[0.92, -0.9, 0.9]} args={defaultBoxArgs}>
+                    <Plane
+                        scale={[0.92, -0.9, 0.9]}
+                        args={defaultBoxArgs}
+                        getObjectsByProperty={undefined}
+                        getVertexPosition={undefined}
+                    >
                         <meshBasicMaterial color="white" />
                     </Plane>
-                    <Text position={[0, 0, 0.1]} scale={3} color="black">
-                        Github
+                    <Text
+                        position={[0, 0, 0.1]}
+                        scale={3}
+                        color="black"
+                        getObjectsByProperty={undefined}
+                        getVertexPosition={undefined}
+                    >
+                        LEON LAI
                     </Text>
                 </group>
 
-                <Box args={defaultBoxArgs}>
+                <Box
+                    args={defaultBoxArgs}
+                    getObjectsByProperty={undefined}
+                    getVertexPosition={undefined}
+                >
                     <meshBasicMaterial color="black" />
                 </Box>
                 <Box
                     args={defaultBoxArgs}
+                    getObjectsByProperty={undefined}
+                    getVertexPosition={undefined}
                     position={[
                         0,
                         defaultBoxArgs[1] / -2,

@@ -1,16 +1,16 @@
-import { useCursor, useScroll } from "@react-three/drei";
-import { ThreeElements, useFrame } from "@react-three/fiber";
-import TextRing from "components/effects/textRing";
-import ImageMaterial from "materials/imageMaterial";
-import { useRef, useState } from "react";
+import { useCursor, useScroll } from '@react-three/drei';
+import { ThreeElements, useFrame } from '@react-three/fiber';
+import TextRing from 'components/effects/textRing';
+import ImageMaterial from 'materials/imageMaterial';
+import { useRef, useState } from 'react';
 
 interface PlanetObjectProps {
-    meshProps: ThreeElements["mesh"];
+    meshProps: ThreeElements['mesh'];
     texture: string;
 }
 
 export interface PlanetProps extends PlanetObjectProps {
-    groupProps: ThreeElements["group"];
+    groupProps: ThreeElements['group'];
     text: string;
 }
 
