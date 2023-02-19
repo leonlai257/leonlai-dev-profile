@@ -1,16 +1,16 @@
-import { useCursor, useScroll } from '@react-three/drei';
-import { ThreeElements, useFrame } from '@react-three/fiber';
-import TextRing from 'components/effects/textRing';
-import ImageMaterial from 'materials/imageMaterial';
-import { useRef, useState } from 'react';
+import { useCursor, useScroll } from "@react-three/drei";
+import { ThreeElements, useFrame } from "@react-three/fiber";
+import TextRing from "components/effects/textRing";
+import ImageMaterial from "materials/imageMaterial";
+import { useRef, useState } from "react";
 
 interface PlanetObjectProps {
-    meshProps: ThreeElements['mesh'];
+    meshProps: ThreeElements["mesh"];
     texture: string;
 }
 
 export interface PlanetProps extends PlanetObjectProps {
-    groupProps: ThreeElements['group'];
+    groupProps: ThreeElements["group"];
     text: string;
 }
 
@@ -43,7 +43,7 @@ const Planets = ({ planets }: { planets: PlanetProps[] }) => {
     useCursor(hovered);
 
     useFrame(() => {
-        setSize(scroll.range(0 / 2, 1 / 2));
+        setSize(scroll.range(0 / 2, 1 / 2) * 2);
     });
 
     return (
@@ -60,7 +60,8 @@ const Planets = ({ planets }: { planets: PlanetProps[] }) => {
                         onPointerOver={(e) => (
                             e.stopPropagation(), setHoverStatus(true)
                         )}
-                        onPointerOut={(e) => setHoverStatus(false)}>
+                        onPointerOut={(e) => setHoverStatus(false)}
+                    >
                         <TextRing text={planet.text} hovered={hovered} />
                         <PlanetObject
                             props={{

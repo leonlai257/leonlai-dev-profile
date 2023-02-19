@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { useFrame, useThree } from '@react-three/fiber';
-import * as THREE from 'three';
+import React, { useRef, useState } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
 
 const Rig = ({
     children,
@@ -18,16 +18,15 @@ const Rig = ({
     const [shipShaking, setShaking] = useState(1);
 
     useFrame(() => {
-        if (isTraveling) {
-            camera.position.lerp(
-                vec.set(
-                    camera.position.x,
-                    -mouse.y * cameraOffset,
-                    -mouse.x * cameraOffset
-                ),
-                0.05
-            );
-        }
+        camera.position.lerp(
+            vec.set(
+                camera.position.x,
+                -mouse.y * (isTraveling ? cameraOffset : cameraOffset * 0.5),
+                -mouse.x * (isTraveling ? cameraOffset : cameraOffset * 0.5)
+            ),
+            0.05
+        );
+
         setShaking(isTraveling ? 1 : 0);
 
         ref.current.position.lerp(

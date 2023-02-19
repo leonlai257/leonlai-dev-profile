@@ -1,9 +1,9 @@
-import { ThreeElements, useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
-import * as THREE from 'three';
+import { ThreeElements, useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import * as THREE from "three";
 
 export interface HyperLightProps {
-    meshProps: ThreeElements['mesh'];
+    meshProps: ThreeElements["mesh"];
     material: {
         color: number;
         emissive: number;
@@ -29,8 +29,9 @@ const HyperLight = (props: HyperLightProps) => {
             {...props.meshProps}
             ref={hyperLight}
             geometry={cylinderGeometry}
-            rotation={[0, 0, Math.PI / 2]}>
-            <meshLambertMaterial attach={'material'} args={[props.material]} />
+            rotation={[0, 0, Math.PI / 2]}
+        >
+            <meshLambertMaterial attach={"material"} args={[props.material]} />
         </mesh>
     );
 };

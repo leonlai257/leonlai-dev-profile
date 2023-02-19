@@ -3,15 +3,15 @@ import { ThreeElements, useFrame } from "@react-three/fiber";
 import { useState } from "react";
 import { Euler } from "three";
 
-export interface ScreenProps {
+export interface SpaceStationProps {
     groupProps: ThreeElements["group"];
 }
 
-const defaultProps: ScreenProps = {
+const defaultProps: SpaceStationProps = {
     groupProps: {},
 };
 
-const DisplayScreen = (props: ScreenProps) => {
+const SpaceStation = (props: SpaceStationProps) => {
     props = { ...defaultProps, ...props };
     const { groupProps } = props;
     const [size, setSize] = useState(1);
@@ -26,19 +26,32 @@ const DisplayScreen = (props: ScreenProps) => {
         setSize(scroll.range(0 / 2, 1 / 2) * 2);
     });
 
+    const defaultBoxArgs = [16, 9, 1];
+
     return (
         <group {...groupProps}>
             <group {...defaultSetting} scale={size}>
                 <group position={[0, 0, 0.6]}>
-                    <Plane scale={[0.92, -0.9, 0.9]} args={[16, 9, 1]}>
+                    <Plane scale={[0.92, -0.9, 0.9]} args={defaultBoxArgs}>
                         <meshBasicMaterial color="white" />
                     </Plane>
-                    <Text scale={3} color="black">
-                        Directory
+                    <Text position={[0, 0, 0.1]} scale={3} color="black">
+                        Github
                     </Text>
                 </group>
 
-                <Box args={[16, 9, 1]}>
+                <Box args={defaultBoxArgs}>
+                    <meshBasicMaterial color="black" />
+                </Box>
+                <Box
+                    args={defaultBoxArgs}
+                    position={[
+                        0,
+                        defaultBoxArgs[1] / -2,
+                        defaultBoxArgs[0] / 4,
+                    ]}
+                    rotation={[Math.PI / 2, 0, 0]}
+                >
                     <meshBasicMaterial color="black" />
                 </Box>
             </group>
@@ -46,4 +59,4 @@ const DisplayScreen = (props: ScreenProps) => {
     );
 };
 
-export default DisplayScreen;
+export default SpaceStation;

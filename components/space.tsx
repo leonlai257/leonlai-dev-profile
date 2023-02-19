@@ -1,13 +1,13 @@
-import { Effects, Stars, useScroll } from '@react-three/drei';
-import { extend, useFrame, useThree } from '@react-three/fiber';
-import { Suspense, useRef, useState } from 'react';
-import * as THREE from 'three';
-import { UnrealBloomPass } from 'three-stdlib';
-import WelcomeText from './html/welcomeText';
-import Comets, { CometProps } from './objects/comets';
-import DisplayScreen from './objects/displayScreen';
-import HyperLight, { HyperLightProps } from './objects/hyperlight';
-import Planets, { PlanetProps } from './objects/planets';
+import { Effects, Stars, useScroll } from "@react-three/drei";
+import { extend, useFrame, useThree } from "@react-three/fiber";
+import { Suspense, useRef, useState } from "react";
+import * as THREE from "three";
+import { UnrealBloomPass } from "three-stdlib";
+import WelcomeText from "./html/welcomeText";
+import Comets, { CometProps } from "./objects/comets";
+import SpaceStation from "./objects/spaceStation";
+import HyperLight, { HyperLightProps } from "./objects/hyperlight";
+import Planets, { PlanetProps } from "./objects/planets";
 
 extend({ UnrealBloomPass });
 
@@ -31,8 +31,8 @@ const planetsConfig: PlanetProps[] = [
             scale: [10, 10, 10],
         },
         meshProps: {},
-        texture: '/Terrestrial.png',
-        text: 'PROFILE',
+        texture: "/Terrestrial.png",
+        text: "PROFILE",
     },
     {
         groupProps: {
@@ -40,8 +40,8 @@ const planetsConfig: PlanetProps[] = [
             scale: [6, 6, 6],
         },
         meshProps: {},
-        texture: '/Tropical.png',
-        text: 'SKILLS',
+        texture: "/Tropical.png",
+        text: "SKILLS",
     },
 ];
 
@@ -118,9 +118,10 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                 );
             })}
 
-            <DisplayScreen
+            <SpaceStation
                 groupProps={{
-                    position: [180, 20, 0],
+                    rotation: [0, Math.PI / 7, 0],
+                    position: [200, 30, -40],
                 }}
             />
 
@@ -145,9 +146,9 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
             <WelcomeText
                 title={`Hey, I am Leon Lai, a full stack web developer based in Hong Kong.`}
                 subText={
-                    'Building 3d websites and games is my passion. I am always exploring new technologies and equipped with extensive skills in Frontend, Backend, MR/AR, and more.'
+                    "Building 3d websites and games is my passion. I am always exploring new technologies and equipped with extensive skills in Frontend, Backend, MR/AR, and more."
                 }
-                scrollText={'Scroll to learn more...'}
+                scrollText={"Scroll to learn more..."}
             />
         </group>
     );
