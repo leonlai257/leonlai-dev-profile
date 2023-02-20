@@ -38,7 +38,7 @@ const WelcomeText = (props: TitleProps) => {
                     scrollText.substring(0, displayScrollText.length + 1)
                 );
             }
-        }, 100);
+        }, 50);
 
         return () => clearInterval(interval);
     });
@@ -67,7 +67,8 @@ const WelcomeText = (props: TitleProps) => {
                 whiteSpace: 'pre-wrap',
                 position: 'sticky',
             }}
-            position={[0, 0, 0]}>
+            position={[0, 0, 0]}
+        >
             <div
                 ref={displayRef}
                 style={{
@@ -76,7 +77,8 @@ const WelcomeText = (props: TitleProps) => {
                     justifyContent: 'center',
                     margin: 'auto',
                     width: '40%',
-                }}>
+                }}
+            >
                 <h1 style={{}}>{displayTitle}</h1>
                 <h2 style={{}}>{displaySubText}</h2>
                 <h4 style={{}}>{displayScrollText}</h4>

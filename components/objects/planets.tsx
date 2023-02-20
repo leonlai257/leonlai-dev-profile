@@ -14,7 +14,7 @@ export interface PlanetProps extends PlanetObjectProps {
     text: string;
 }
 
-const PlanetObject = ({
+const PlanetSphere = ({
     props,
     hovered,
 }: {
@@ -33,14 +33,38 @@ const PlanetObject = ({
     );
 };
 
+const PlanetObject = ({ planet }: { planet: PlanetProps }) => {
+    const [clicked, setClickStatus] = useState(false);
+    const [hovered, setHoverStatus] = useState(false);
+    useCursor(hovered);
+    return (
+        <group
+            key={planet.text}
+            {...planet.groupProps}
+            onClick={(e) => {
+                e.stopPropagation(), setClickStatus(!clicked);
+            }}
+            onPointerOver={(e) => (e.stopPropagation(), setHoverStatus(true))}
+            onPointerOut={(e) => setHoverStatus(false)}
+        >
+            <TextRing text={planet.text} hovered={hovered} />
+            <PlanetSphere
+                props={{
+                    meshProps: {
+                        ...planet.meshProps,
+                    },
+                    texture: planet.texture,
+                }}
+                hovered={hovered}
+            />
+        </group>
+    );
+};
+
 const Planets = ({ planets }: { planets: PlanetProps[] }) => {
     const ref = useRef<THREE.Group>(null!);
     const scroll = useScroll();
     const [size, setSize] = useState(1);
-    const [clicked, setClickStatus] = useState(false);
-    const [hovered, setHoverStatus] = useState(false);
-
-    useCursor(hovered);
 
     useFrame(() => {
         setSize(scroll.range(0 / 2, 1 / 2) * 2);
@@ -48,32 +72,9 @@ const Planets = ({ planets }: { planets: PlanetProps[] }) => {
 
     return (
         <group ref={ref}>
-            {planets.map((planet, index) => {
-                return (
-                    <group
-                        key={index}
-                        {...planet.groupProps}
-                        scale={size * 5}
-                        onClick={(e) => {
-                            e.stopPropagation(), setClickStatus(!clicked);
-                        }}
-                        onPointerOver={(e) => (
-                            e.stopPropagation(), setHoverStatus(true)
-                        )}
-                        onPointerOut={(e) => setHoverStatus(false)}
-                    >
-                        <TextRing text={planet.text} hovered={hovered} />
-                        <PlanetObject
-                            props={{
-                                meshProps: {
-                                    ...planet.meshProps,
-                                },
-                                texture: planet.texture,
-                            }}
-                            hovered={hovered}
-                        />
-                    </group>
-                );
+            {planets.map((planet) => {
+                planet.groupProps = { ...planet.groupProps, scale: size * 5 };
+                return <PlanetObject key={planet.text} planet={planet} />;
             })}
         </group>
     );
