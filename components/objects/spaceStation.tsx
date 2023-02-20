@@ -1,10 +1,5 @@
 import { Box, Plane, Text, useScroll } from '@react-three/drei';
-import {
-    BoxBufferGeometryProps,
-    PlaneBufferGeometryProps,
-    ThreeElements,
-    useFrame,
-} from '@react-three/fiber';
+import { ThreeElements, useFrame } from '@react-three/fiber';
 import { useState } from 'react';
 import { Euler } from 'three';
 
@@ -31,7 +26,14 @@ const SpaceStation = (props: SpaceStationProps) => {
         setSize(scroll.range(0 / 2, 1 / 2) * 2);
     });
 
-    const defaultBoxArgs: BoxBufferGeometryProps = [16, 9, 1];
+    const defaultBoxArgs:
+        | [
+              width?: number | undefined,
+              height?: number | undefined,
+              widthSegments?: number | undefined,
+              heightSegments?: number | undefined
+          ]
+        | undefined = [16, 9, 1];
 
     return (
         <group {...groupProps}>
@@ -70,8 +72,8 @@ const SpaceStation = (props: SpaceStationProps) => {
                     getVertexPosition={undefined}
                     position={[
                         0,
-                        defaultBoxArgs[1] / -2,
-                        defaultBoxArgs[0] / 4,
+                        defaultBoxArgs[1]! / -2,
+                        defaultBoxArgs[0]! / 4,
                     ]}
                     rotation={[Math.PI / 2, 0, 0]}
                 >

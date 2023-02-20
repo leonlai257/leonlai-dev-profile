@@ -21,8 +21,8 @@ const Rig = ({
         camera.position.lerp(
             vec.set(
                 camera.position.x,
-                -mouse.y * (isTraveling ? cameraOffset : cameraOffset * 0.5),
-                -mouse.x * (isTraveling ? cameraOffset : cameraOffset * 0.5)
+                -mouse.y * (isTraveling ? cameraOffset : cameraOffset * 0.2),
+                -mouse.x * (isTraveling ? cameraOffset : cameraOffset * 0.2)
             ),
             0.05
         );

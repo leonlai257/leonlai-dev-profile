@@ -27,7 +27,7 @@ const colors = [
 const planetsConfig: PlanetProps[] = [
     {
         groupProps: {
-            position: [160, 0, 0],
+            position: [160, 0, 25],
             scale: [10, 10, 10],
         },
         meshProps: {},
@@ -36,7 +36,7 @@ const planetsConfig: PlanetProps[] = [
     },
     {
         groupProps: {
-            position: [210, 30, 40],
+            position: [190, 10, 0],
             scale: [6, 6, 6],
         },
         meshProps: {},
@@ -121,7 +121,7 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
             <SpaceStation
                 groupProps={{
                     rotation: [0, Math.PI / 7, 0],
-                    position: [200, 30, -40],
+                    position: [200, -20, -55],
                 }}
             />
 
