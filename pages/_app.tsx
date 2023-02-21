@@ -9,6 +9,7 @@ function App({ Component, pageProps }: AppProps) {
     useEffect(() => {
         globalStyles();
     }, []);
+
     return (
         <>
             <Head>
@@ -27,7 +28,8 @@ function App({ Component, pageProps }: AppProps) {
                     width: '100%',
                     height: '100%',
                     overflow: 'hidden',
-                }}>
+                }}
+            >
                 <Canvas>
                     <ambientLight />
                     <directionalLight position={[0, 0, 0]} intensity={1} />
@@ -36,7 +38,8 @@ function App({ Component, pageProps }: AppProps) {
                         distance={1}
                         damping={1}
                         horizontal={false}
-                        infinite={false}>
+                        infinite={false}
+                    >
                         <Component {...pageProps} />
                     </ScrollControls>
                 </Canvas>

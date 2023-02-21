@@ -504,20 +504,19 @@ export const globalStyles = globalCss({
     '@font-face': [
         {
             fontFamily: 'Ubuntu',
-            src: `local("Ubuntu"), url("/fonts/Ubuntu-Bold.ttf"), url("/fonts/Ubuntu-Bold.woff"), url("/fonts/Ubuntu-Bold.woff2"), url("/fonts/Ubuntu-Bold.eot")`,
+            src: `local("Ubuntu"), url("/fonts/Ubuntu-Bold.ttf"), url("/fonts/Ubuntu-Bold.woff"), url("/fonts/Ubuntu-Bold.woff2"), url("/fonts/Ubuntu-Bold.eot"), url("/fonts/Ubuntu-Bold.svg")`,
             fontWeight: 'bold',
             fontStyle: 'normal',
         },
         {
             fontFamily: 'Ubuntu',
-            src: `local("Ubuntu"), url("/fonts/Ubuntu-Regular.ttf"), url("/fonts/Ubuntu-Regular.woff"), url("/fonts/Ubuntu-Regular.woff2"), url("/fonts/Ubuntu-Regular.eot")`,
-
+            src: `local("Ubuntu"), url("/fonts/Ubuntu-Regular.ttf"), url("/fonts/Ubuntu-Regular.woff"), url("/fonts/Ubuntu-Regular.woff2"), url("/fonts/Ubuntu-Regular.eot"), url("/fonts/Ubuntu-Regular.svg")`,
             fontWeight: 'normal',
             fontStyle: 'normal',
         },
         {
             fontFamily: 'Ubuntu',
-            src: `local("Ubuntu"), url("/fonts/Ubuntu-Light.ttf"), url("/fonts/Ubuntu-Light.woff"), url("/fonts/Ubuntu-Light.woff2"), url("/fonts/Ubuntu-Light.eot")`,
+            src: `local("Ubuntu"), url("/fonts/Ubuntu-Light.ttf"), url("/fonts/Ubuntu-Light.woff"), url("/fonts/Ubuntu-Light.woff2"), url("/fonts/Ubuntu-Light.eot"), url("/fonts/Ubuntu-Light.svg")`,
             fontWeight: 'light',
             fontStyle: 'normal',
         },
