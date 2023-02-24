@@ -1,5 +1,9 @@
 import { Cylinder } from '@react-three/drei';
-import { CylinderBufferGeometryProps, useFrame } from '@react-three/fiber';
+import {
+    CylinderBufferGeometryProps,
+    ThreeElements,
+    useFrame,
+} from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
 import { Vector2 } from 'three';
@@ -23,7 +27,15 @@ const ccccc = (children: string, color: string) => {
     return canvas;
 };
 
-const TextRing = ({ text, hovered }: { text: string; hovered: boolean }) => {
+const TextRing = ({
+    text,
+    hovered,
+    groupProps,
+}: {
+    text: string;
+    hovered: boolean;
+    groupProps?: ThreeElements['group'];
+}) => {
     const canvas = useMemo(() => {
         return ccccc(text, 'white');
     }, [text]);
@@ -42,7 +54,12 @@ const TextRing = ({ text, hovered }: { text: string; hovered: boolean }) => {
     const cylArgs = [1, 1, 1, 64, 1, true];
 
     return (
-        <group rotation-y={Math.PI / 4} rotation-x={-Math.PI / 16} scale={1.2}>
+        <group
+            rotation-y={Math.PI / 4}
+            rotation-x={-Math.PI / 16}
+            scale={1.2}
+            {...groupProps}
+        >
             <Cylinder args={cylArgs}>
                 <meshStandardMaterial
                     transparent
@@ -50,7 +67,8 @@ const TextRing = ({ text, hovered }: { text: string; hovered: boolean }) => {
                     attach="material"
                     side={THREE.FrontSide}
                     depthTest={false}
-                    depthWrite={false}>
+                    depthWrite={false}
+                >
                     <canvasTexture
                         attach="map"
                         repeat={new Vector2(4, 1)}
@@ -69,7 +87,8 @@ const TextRing = ({ text, hovered }: { text: string; hovered: boolean }) => {
                     attach="material"
                     side={THREE.BackSide}
                     depthTest={false}
-                    depthWrite={false}>
+                    depthWrite={false}
+                >
                     <canvasTexture
                         attach="map"
                         repeat={new Vector2(8, 1)}

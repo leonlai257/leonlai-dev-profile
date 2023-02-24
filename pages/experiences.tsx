@@ -42,7 +42,7 @@ const MainComponent = () => {
     );
 };
 
-const Main: NextPage = () => {
+const Experiences: NextPage = () => {
     return (
         <group>
             <ambientLight />
@@ -60,4 +60,4 @@ const Main: NextPage = () => {
     );
 };
 
-export default Main;
+export default Experiences;

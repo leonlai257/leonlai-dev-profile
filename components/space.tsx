@@ -32,7 +32,7 @@ const planetsConfig: PlanetProps[] = [
         },
         meshProps: {},
         texture: '/Terrestrial.png',
-        text: 'PROFILE',
+        text: 'ABOUTME',
     },
     {
         groupProps: {
@@ -41,7 +41,7 @@ const planetsConfig: PlanetProps[] = [
         },
         meshProps: {},
         texture: '/Tropical.png',
-        text: 'SKILLS',
+        text: 'CONTACT',
     },
 ];
 

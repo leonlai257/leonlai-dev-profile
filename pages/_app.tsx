@@ -4,6 +4,9 @@ import { globalStyles } from '@src/stitches.config';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useEffect } from 'react';
+import { Route, Switch } from 'wouter';
+import Main from '.';
+import Experiences from './experiences';
 
 function App({ Component, pageProps }: AppProps) {
     useEffect(() => {
@@ -31,17 +34,14 @@ function App({ Component, pageProps }: AppProps) {
                 }}
             >
                 <Canvas>
-                    <ambientLight />
-                    <directionalLight position={[0, 0, 0]} intensity={1} />
-                    <ScrollControls
-                        pages={2}
-                        distance={1}
-                        damping={1}
-                        horizontal={false}
-                        infinite={false}
-                    >
-                        <Component {...pageProps} />
-                    </ScrollControls>
+                    <Switch>
+                        <Route path="/">
+                            <Main />
+                        </Route>
+                        <Route path="/experiences">
+                            <Experiences />
+                        </Route>
+                    </Switch>
                 </Canvas>
             </div>
         </>
