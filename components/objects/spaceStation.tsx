@@ -31,8 +31,8 @@ const SpaceStation = (props: SpaceStationProps) => {
 
     const [location, push] = useLocation();
 
-    const onClickEvent = (e: any) => {
-    
+    const onClickEvent = () => {
+        push('/experiences');
     };
 
     const defaultSetting: ThreeElements['group'] = {
@@ -55,7 +55,7 @@ const SpaceStation = (props: SpaceStationProps) => {
                 {...defaultSetting}
                 scale={size}
                 onClick={(e) => {
-                    e.stopPropagation(), setClickStatus(!clicked);
+                    e.stopPropagation(), onClickEvent();
                 }}
                 onPointerOver={(e) => (
                     e.stopPropagation(), setHoverStatus(true)
