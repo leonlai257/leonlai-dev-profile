@@ -2,11 +2,22 @@ import { useGLTF, useScroll } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import * as THREE from 'three';
+import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import JetEngine from '../effects/jetEngine';
 import Rig from '../effects/rig';
 
+type GLTFResult = GLTF & {
+    nodes: {
+        Striker: THREE.Mesh;
+    };
+    materials: {
+        ['Texture']: THREE.MeshStandardMaterial;
+    };
+};
+
 const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
-    const { nodes, materials } = useGLTF('/Striker.gltf');
+    const { nodes, materials } = useGLTF('/Striker.gltf') as GLTFResult;
+
     const scroll = useScroll();
     const booster = useRef<THREE.Mesh>(null!);
     // const materials = useTexture({ map: '/Striker_Blue.png' });
@@ -29,7 +40,8 @@ const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
                     receiveShadow
                     rotation={[0, Math.PI, 0]}
                     geometry={(nodes['Striker'] as THREE.Mesh).geometry}
-                    material={materials.Texture}>
+                    material={materials.Texture}
+                >
                     {/* <meshStandardMaterial {...materials} /> */}
                 </mesh>
                 <group>
@@ -39,7 +51,8 @@ const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
                             1 + boosterThrust / 10,
                             1 + boosterThrust / 10,
                             boosterThrust,
-                        ]}>
+                        ]}
+                    >
                         <JetEngine />
                     </group>
                     <group
@@ -48,7 +61,8 @@ const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
                             1 + boosterThrust / 10,
                             1 + boosterThrust / 10,
                             boosterThrust,
-                        ]}>
+                        ]}
+                    >
                         <JetEngine />
                     </group>
                     <group
@@ -57,7 +71,8 @@ const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
                             1 + boosterThrust / 16,
                             1 + boosterThrust / 16,
                             boosterThrust,
-                        ]}>
+                        ]}
+                    >
                         <JetEngine />
                     </group>
                 </group>

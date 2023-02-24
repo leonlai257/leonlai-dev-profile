@@ -17,10 +17,6 @@ export const {
     theme: {
         fonts: {
             system: 'system-ui',
-            mono: '"Special Elite", sans-serif',
-            roboto: '"Roboto", sans-serif',
-            conthrax: '"Conthrax", sans-serif',
-            boston: '"Boston Traffic", "Noto Sans TC", sans-serif',
             ubuntu: '"Ubuntu", sans-serif',
         },
         colors: {
@@ -482,7 +478,7 @@ export const globalStyles = globalCss({
     },
     'html, body': {
         fontFamily: '$ubuntu',
-        color: 'white',
+        color: '$textPrimary',
         backgroundColor: '$background',
         margin: '0',
         padding: '0',
@@ -493,13 +489,6 @@ export const globalStyles = globalCss({
         display: 'flex',
         width: '100%',
         flexDirection: 'column',
-    },
-    ul: {
-        margin: 0,
-    },
-    strong: {
-        color: '$primary',
-        fontWeight: 500,
     },
     '@font-face': [
         {

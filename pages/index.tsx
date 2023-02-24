@@ -30,6 +30,7 @@ const Main: NextPage = () => {
                 far={1000}
                 position={[-80, 0, 0]}
                 rotation={[0, Math.PI + Math.PI / 2, 0]}
+                getObjectsByProperty={undefined}
             >
                 <SpaceShip isTraveling={isTraveling} />
             </PerspectiveCamera>
