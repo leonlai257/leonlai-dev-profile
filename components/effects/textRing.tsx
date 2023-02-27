@@ -51,7 +51,18 @@ const TextRing = ({
         backTexture.current.offset.x += hovered ? -0.012 : 0.006;
     });
 
-    const cylArgs = [1, 1, 1, 64, 1, true];
+    const cylArgs:
+        | [
+              radiusTop?: number | undefined,
+              radiusBottom?: number | undefined,
+              height?: number | undefined,
+              radialSegments?: number | undefined,
+              heightSegments?: number | undefined,
+              openEnded?: boolean | undefined,
+              thetaStart?: number | undefined,
+              thetaLength?: number | undefined
+          ]
+        | undefined = [1, 1, 1, 64, 1, true];
 
     return (
         <group
@@ -60,7 +71,11 @@ const TextRing = ({
             scale={1.2}
             {...groupProps}
         >
-            <Cylinder args={cylArgs}>
+            <Cylinder
+                args={cylArgs}
+                getObjectsByProperty={undefined}
+                getVertexPosition={undefined}
+            >
                 <meshStandardMaterial
                     transparent
                     blending={THREE.AdditiveBlending}
@@ -81,7 +96,11 @@ const TextRing = ({
                     />
                 </meshStandardMaterial>
             </Cylinder>
-            <Cylinder args={cylArgs}>
+            <Cylinder
+                args={cylArgs}
+                getObjectsByProperty={undefined}
+                getVertexPosition={undefined}
+            >
                 <meshStandardMaterial
                     blending={THREE.AdditiveBlending}
                     attach="material"
