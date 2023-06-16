@@ -101,11 +101,11 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
 
     return (
         <group ref={space}>
-            {/* <Suspense fallback={null}>
-                <Effects disableGamma>
-                    <unrealBloomPass threshold={0.7} strength={1} radius={1} />
-                </Effects>
-            </Suspense> */}
+            {/* <Suspense fallback={null}> */}
+            <Effects disableGamma>
+                <unrealBloomPass threshold={0.7} strength={1} radius={1} />
+            </Effects>
+            {/* </Suspense> */}
 
             {/* To be disabled after entering some other instance*/}
             {hyperLight.map((hyperLight, index) => {

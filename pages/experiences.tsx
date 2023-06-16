@@ -10,18 +10,17 @@ import type { NextPage } from 'next';
 import { useRef, useState } from 'react';
 import SpaceShip from '../components/objects/ship';
 import Space from '../components/space';
+import gsap from 'gsap';
 
-const MainComponent = () => {
+const ExperiencesComponent = () => {
     const camera = useRef();
-    const scroll = useScroll();
     const [isTraveling, setTravelStatus] = useState(true);
     const [animation, setAnimation] = useState<AnimationTypes>(
         AnimationTypes.FADEOUT
     );
 
-    useFrame(() => {
-        setTravelStatus(!scroll.visible(1 / 2, 2 / 2));
-    });
+    gsap.registerPlugin(ScrollTrigger);
+
     return (
         <group>
             <UI animation={animation} setAnimation={setAnimation} />
@@ -34,10 +33,7 @@ const MainComponent = () => {
                 position={[-80, 0, 0]}
                 rotation={[0, Math.PI + Math.PI / 2, 0]}
                 getObjectsByProperty={undefined}
-            >
-                <SpaceShip isTraveling={isTraveling} />
-            </PerspectiveCamera>
-            <Space isTraveling={isTraveling} />
+            ></PerspectiveCamera>
         </group>
     );
 };
@@ -54,7 +50,7 @@ const Experiences: NextPage = () => {
                 horizontal={false}
                 infinite={false}
             >
-                <MainComponent />
+                <ExperiencesComponent />
             </ScrollControls>
         </group>
     );
