@@ -1,25 +1,21 @@
 import {
     PerspectiveCamera,
+    Plane,
     ScrollControls,
     useScroll,
 } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
 import { AnimationTypes } from '@src/components/atoms/Animation';
 import UI from 'components/html/ui';
 import type { NextPage } from 'next';
 import { useRef, useState } from 'react';
-import SpaceShip from '../components/objects/ship';
-import Space from '../components/space';
-import gsap from 'gsap';
 
 const ExperiencesComponent = () => {
     const camera = useRef();
-    const [isTraveling, setTravelStatus] = useState(true);
     const [animation, setAnimation] = useState<AnimationTypes>(
         AnimationTypes.FADEOUT
     );
 
-    gsap.registerPlugin(ScrollTrigger);
+    const scroll = useScroll();
 
     return (
         <group>
@@ -33,7 +29,12 @@ const ExperiencesComponent = () => {
                 position={[-80, 0, 0]}
                 rotation={[0, Math.PI + Math.PI / 2, 0]}
                 getObjectsByProperty={undefined}
-            ></PerspectiveCamera>
+            >
+                <mesh>
+                    <planeBufferGeometry args={[1, 1, 1]} />
+                    <meshBasicMaterial color="white" />
+                </mesh>
+            </PerspectiveCamera>
         </group>
     );
 };
