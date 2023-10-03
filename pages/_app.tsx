@@ -1,26 +1,16 @@
-import { ScrollControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { globalStyles } from '@src/stitches.config';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { useEffect } from 'react';
 import { Route, Switch } from 'wouter';
 import Main from '.';
 import Experiences from './experiences';
 
 function App({ Component, pageProps }: AppProps) {
-    useEffect(() => {
-        globalStyles();
-    }, []);
-
     return (
         <>
             <Head>
                 <title>Leon Lai</title>
-                <meta
-                    name="description"
-                    content="Leon Lai's personal website"
-                />
+                <meta name="Leon Lai" content="Leon Lai's personal website" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div

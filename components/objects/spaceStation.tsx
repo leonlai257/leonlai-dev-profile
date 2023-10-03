@@ -77,7 +77,6 @@ const SpaceStation = (props: SpaceStationProps) => {
                         color="black"
                         getObjectsByProperty={undefined}
                         getVertexPosition={undefined}
-                        font={'ubuntu'}
                     >
                         LEON LAI
                     </Text>

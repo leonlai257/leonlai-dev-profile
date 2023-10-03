@@ -1,4 +1,4 @@
-import { keyframes, styled } from '@src/stitches.config';
+import { keyframes, styled } from '@src/styles/stitches.config';
 
 export enum AnimationTypes {
     FADEIN = 'fadeIn',

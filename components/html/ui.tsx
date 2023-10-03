@@ -1,5 +1,5 @@
 import { Html } from '@react-three/drei';
-import { Animation, AnimationTypes } from '@src/components/atoms/Animation';
+import { Animation, AnimationTypes } from '@src/styles/animations';
 import { useLocation } from 'wouter';
 
 const UI = (props: {

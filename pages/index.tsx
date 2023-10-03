@@ -4,12 +4,12 @@ import {
     useScroll,
 } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { AnimationTypes } from '@src/components/atoms/Animation';
 import UI from 'components/html/ui';
 import type { NextPage } from 'next';
 import { useRef, useState } from 'react';
 import SpaceShip from '../components/objects/ship';
 import Space from '../components/space';
+import { AnimationTypes } from '@src/styles/animations';
 
 const MainComponent = () => {
     const camera = useRef();
