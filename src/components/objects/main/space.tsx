@@ -1,13 +1,18 @@
 import { Effects, Stars, useScroll } from '@react-three/drei';
-import { extend, useFrame, useThree } from '@react-three/fiber';
-import { Suspense, useRef, useState } from 'react';
+import { extend, useFrame } from '@react-three/fiber';
+import {
+    CometProps,
+    Comets,
+    HyperLight,
+    HyperLightProps,
+    PlanetProps,
+    Planets,
+    SpaceStation,
+    WelcomeText,
+} from '@src/components';
+import { useRef } from 'react';
 import * as THREE from 'three';
 import { UnrealBloomPass } from 'three-stdlib';
-import WelcomeText from './html/welcomeText';
-import Comets, { CometProps } from './objects/comets';
-import SpaceStation from './objects/spaceStation';
-import HyperLight, { HyperLightProps } from './objects/hyperlight';
-import Planets, { PlanetProps } from './objects/planets';
 
 extend({ UnrealBloomPass });
 
@@ -31,7 +36,7 @@ const planetsConfig: PlanetProps[] = [
             scale: [10, 10, 10],
         },
         meshProps: {},
-        texture: '/Terrestrial.png',
+        texture: '/textures/Terrestrial.png',
         text: 'ABOUTME',
     },
     {
@@ -40,7 +45,7 @@ const planetsConfig: PlanetProps[] = [
             scale: [6, 6, 6],
         },
         meshProps: {},
-        texture: '/Tropical.png',
+        texture: '/textures/Tropical.png',
         text: 'CONTACT',
     },
 ];
@@ -53,7 +58,7 @@ declare global {
     }
 }
 
-const Space = ({ isTraveling }: { isTraveling: boolean }) => {
+export const Space = ({ isTraveling }: { isTraveling: boolean }) => {
     const scroll = useScroll();
     const space = useRef<THREE.Group>(null!);
 
@@ -153,5 +158,3 @@ const Space = ({ isTraveling }: { isTraveling: boolean }) => {
         </group>
     );
 };
-
-export default Space;

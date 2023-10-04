@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const Rig = ({
+export const Rig = ({
     children,
     isTraveling,
 }: {
@@ -57,5 +57,3 @@ const Rig = ({
     });
     return <group ref={ref}>{children}</group>;
 };
-
-export default Rig;

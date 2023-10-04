@@ -4,11 +4,9 @@ import {
     useScroll,
 } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import UI from 'components/html/ui';
+import { Layout, Space, SpaceShip } from '@src/components';
 import type { NextPage } from 'next';
 import { useRef, useState } from 'react';
-import SpaceShip from '../components/objects/ship';
-import Space from '../components/space';
 import { AnimationTypes } from '@src/styles/animations';
 
 const MainComponent = () => {
@@ -24,7 +22,7 @@ const MainComponent = () => {
     });
     return (
         <group>
-            <UI animation={animation} setAnimation={setAnimation} />
+            <Layout animation={animation} setAnimation={setAnimation} />
             <PerspectiveCamera
                 makeDefault
                 ref={camera}

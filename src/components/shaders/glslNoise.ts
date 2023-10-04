@@ -1,4 +1,4 @@
-const glslNoise = `
+export const glslNoise = `
 
 //
 // Description : Array and textureless GLSL 2D/3D/4D simplex
@@ -138,5 +138,3 @@ vec3 curlNoise( vec3 p ){
 }
 
 `;
-
-export default glslNoise;

@@ -1,17 +1,19 @@
 import { extend, ThreeElements, useFrame, useLoader } from '@react-three/fiber';
-import JetEngineMaterial from 'materials/jetEngineMaterial';
+import { JetEngineMaterial } from '@src/components';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 extend({ JetEngineMaterial });
 
-const JetEngine = (props: ThreeElements['mesh']) => {
+export const JetEngine = (props: ThreeElements['mesh']) => {
     const ref = useRef<THREE.ShaderMaterial>(null!);
     useFrame(({ clock }) => {
         ref.current.uniforms.uTime.value = clock.getElapsedTime();
     });
 
-    const [noiseMap] = useLoader(THREE.TextureLoader, ['/noiseTexture.jpg']);
+    const [noiseMap] = useLoader(THREE.TextureLoader, [
+        '/textures/noiseTexture.jpg',
+    ]);
 
     noiseMap.wrapT = THREE.RepeatWrapping;
     noiseMap.wrapS = THREE.RepeatWrapping;
@@ -28,5 +30,3 @@ const JetEngine = (props: ThreeElements['mesh']) => {
         </mesh>
     );
 };
-
-export default JetEngine;

@@ -1,7 +1,7 @@
 import { shaderMaterial } from '@react-three/drei';
 import { ReactThreeFiber } from '@react-three/fiber';
 import * as THREE from 'three';
-import { jetEngineFragment, jetEngineVertex } from '../shaders/jetEngineShader';
+import { jetEngineFragment, jetEngineVertex } from '@src/components';
 
 declare global {
     namespace JSX {
@@ -14,7 +14,7 @@ declare global {
     }
 }
 
-const JetEngineMaterial = shaderMaterial(
+export const JetEngineMaterial = shaderMaterial(
     {
         blending: THREE.AdditiveBlending,
         uTime: 0,
@@ -26,5 +26,3 @@ const JetEngineMaterial = shaderMaterial(
     jetEngineVertex,
     jetEngineFragment
 );
-
-export default JetEngineMaterial;

@@ -1,7 +1,7 @@
 import { useTexture, useVideoTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
-function MaskMaterial({ url, alpha }: { url: string; alpha: string }) {
+export function MaskMaterial({ url, alpha }: { url: string; alpha: string }) {
     const texture = useVideoTexture(url, {});
     const mask = useTexture(alpha);
 
@@ -16,5 +16,3 @@ function MaskMaterial({ url, alpha }: { url: string; alpha: string }) {
         />
     );
 }
-
-export default MaskMaterial;

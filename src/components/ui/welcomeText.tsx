@@ -8,7 +8,7 @@ interface TitleProps {
     scrollText: string;
 }
 
-const WelcomeText = (props: TitleProps) => {
+export const WelcomeText = (props: TitleProps) => {
     const scroll = useScroll();
 
     const { title, subText, scrollText } = props;
@@ -86,5 +86,3 @@ const WelcomeText = (props: TitleProps) => {
         </Html>
     );
 };
-
-export default WelcomeText;

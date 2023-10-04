@@ -7,7 +7,7 @@ export interface CometProps {
     position: THREE.Vector3;
 }
 
-const Comets = ({ speed = 6, ...props }) => {
+export const Comets = ({ speed = 6, ...props }) => {
     const comet = useRef<THREE.Mesh>(null!);
     useFrame((index, delta) => {
         comet.current.position.x = comet.current.position.x += 60 * delta;
@@ -20,7 +20,8 @@ const Comets = ({ speed = 6, ...props }) => {
                 width={24}
                 length={6}
                 color={new THREE.Color(2, 1, 10)}
-                attenuation={(t) => t * t}>
+                attenuation={(t) => t * t}
+            >
                 <mesh ref={comet}>
                     <sphereGeometry args={[1.2]} />
                     <meshBasicMaterial color={[10, 1, 10]} toneMapped={false} />
@@ -29,5 +30,3 @@ const Comets = ({ speed = 6, ...props }) => {
         </group>
     );
 };
-
-export default Comets;

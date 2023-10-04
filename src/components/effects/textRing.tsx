@@ -1,9 +1,5 @@
 import { Cylinder } from '@react-three/drei';
-import {
-    CylinderBufferGeometryProps,
-    ThreeElements,
-    useFrame,
-} from '@react-three/fiber';
+import { ThreeElements, useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
 import { Vector2 } from 'three';
@@ -27,7 +23,7 @@ const ccccc = (children: string, color: string) => {
     return canvas;
 };
 
-const TextRing = ({
+export const TextRing = ({
     text,
     hovered,
     groupProps,
@@ -123,5 +119,3 @@ const TextRing = ({
         </group>
     );
 };
-
-export default TextRing;

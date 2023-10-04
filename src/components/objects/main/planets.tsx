@@ -1,7 +1,6 @@
 import { useCursor, useScroll } from '@react-three/drei';
 import { ThreeElements, useFrame } from '@react-three/fiber';
-import TextRing from 'components/effects/textRing';
-import ImageMaterial from 'materials/imageMaterial';
+import { TextRing, ImageMaterial } from '@src/components';
 import { useRef, useState } from 'react';
 
 interface PlanetObjectProps {
@@ -61,7 +60,7 @@ const PlanetObject = ({ planet }: { planet: PlanetProps }) => {
     );
 };
 
-const Planets = ({ planets }: { planets: PlanetProps[] }) => {
+export const Planets = ({ planets }: { planets: PlanetProps[] }) => {
     const ref = useRef<THREE.Group>(null!);
     const scroll = useScroll();
     const [size, setSize] = useState(1);
@@ -79,5 +78,3 @@ const Planets = ({ planets }: { planets: PlanetProps[] }) => {
         </group>
     );
 };
-
-export default Planets;

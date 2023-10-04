@@ -1,8 +1,7 @@
 import { Html } from '@react-three/drei';
 import { Animation, AnimationTypes } from '@src/styles/animations';
-import { useLocation } from 'wouter';
 
-const UI = (props: {
+export const Layout = (props: {
     animation: AnimationTypes;
     setAnimation: (animation: AnimationTypes) => void;
 }) => {
@@ -23,5 +22,3 @@ const UI = (props: {
         </Html>
     );
 };
-
-export default UI;

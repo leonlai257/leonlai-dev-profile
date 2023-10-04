@@ -1,6 +1,6 @@
-import glslNoise from './glslNoise';
+import { glslNoise } from './glslNoise';
 
-const jetEngineVertex = `
+export const jetEngineVertex = `
   varying vec2 vUv;
   varying vec3 vPosition;
 
@@ -11,7 +11,7 @@ const jetEngineVertex = `
   }
 `;
 
-const jetEngineFragment = `
+export const jetEngineFragment = `
   precision mediump float;
 
   uniform vec3 uColor;
@@ -44,5 +44,3 @@ const jetEngineFragment = `
       gl_FragColor = fragColor;
   }
 `;
-
-export { jetEngineVertex, jetEngineFragment };

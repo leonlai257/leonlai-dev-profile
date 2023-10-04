@@ -1,6 +1,6 @@
 import { Box, Plane, Text, useCursor, useScroll } from '@react-three/drei';
 import { ThreeElements, useFrame } from '@react-three/fiber';
-import TextRing from 'components/effects/textRing';
+import { TextRing } from '@src/components';
 import { useState } from 'react';
 import { Euler } from 'three';
 import { useLocation } from 'wouter';
@@ -13,7 +13,7 @@ const defaultProps: SpaceStationProps = {
     groupProps: {},
 };
 
-const SpaceStation = (props: SpaceStationProps) => {
+export const SpaceStation = (props: SpaceStationProps) => {
     props = { ...defaultProps, ...props };
     const { groupProps } = props;
 
@@ -113,5 +113,3 @@ const SpaceStation = (props: SpaceStationProps) => {
         </group>
     );
 };
-
-export default SpaceStation;

@@ -3,8 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
-import JetEngine from '../effects/jetEngine';
-import Rig from '../effects/rig';
+import { JetEngine, Rig } from '@src/components';
 
 type GLTFResult = GLTF & {
     nodes: {
@@ -15,7 +14,7 @@ type GLTFResult = GLTF & {
     };
 };
 
-const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
+export const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
     const { nodes, materials } = useGLTF('/Striker.gltf') as GLTFResult;
 
     const scroll = useScroll();
@@ -82,5 +81,3 @@ const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
 };
 
 useGLTF.preload('/Striker.gltf');
-
-export default SpaceShip;

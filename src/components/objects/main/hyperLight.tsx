@@ -13,7 +13,7 @@ export interface HyperLightProps {
 
 const cylinderGeometry = new THREE.CylinderGeometry(0.02, 0.02, 4, 32);
 
-const HyperLight = (props: HyperLightProps) => {
+export const HyperLight = (props: HyperLightProps) => {
     const hyperLight = useRef<THREE.Mesh>(null!);
 
     useFrame(() => {
@@ -35,5 +35,3 @@ const HyperLight = (props: HyperLightProps) => {
         </mesh>
     );
 };
-
-export default HyperLight;
