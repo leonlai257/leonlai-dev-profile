@@ -1,40 +1,61 @@
 import { Canvas } from '@react-three/fiber';
-import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Route, Switch } from 'wouter';
 import Main from '.';
-import Experiences from './experiences';
+import About from './about';
+import Contact from './contact';
+import Work from './work';
+import { Entrance } from '@src/components';
+import { useState } from 'react';
 
-function App({ Component, pageProps }: AppProps) {
+function App() {
+    const [enter, setEnter] = useState(false);
+
     return (
-        <>
+        <div
+            style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                overflow: 'hidden',
+            }}
+        >
             <Head>
                 <title>Leon Lai</title>
                 <meta name="Leon Lai" content="Leon Lai's personal website" />
                 <link rel="icon" href="/favicon.ico" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossOrigin="true"
+                />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Roboto+Mono:wght@600&display=swap"
+                    rel="stylesheet"
+                />
             </Head>
-            <div
-                style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'hidden',
-                }}
-            >
-                <Canvas>
-                    <Switch>
-                        <Route path="/">
-                            <Main />
-                        </Route>
-                        <Route path="/experiences">
-                            <Experiences />
-                        </Route>
-                    </Switch>
-                </Canvas>
-            </div>
-        </>
+
+            {enter || <Entrance onEnter={() => setEnter(true)} />}
+            <Canvas>
+                <Switch>
+                    <Route path="/">
+                        <Main />
+                    </Route>
+                    <Route path="/work">
+                        <Work />
+                    </Route>
+                    <Route path="/about">
+                        <About />
+                    </Route>
+                    <Route path="/contact">
+                        <Contact />
+                    </Route>
+                </Switch>
+            </Canvas>
+        </div>
     );
 }
 

@@ -1,11 +1,11 @@
-import { ThemeTypes } from '../stitches.config'
+import { ThemeTypes } from '../stitches.config';
 
 const themes = {
     light: {
         primary: 'rgba(229, 141, 68, 1)',
         secondary: 'rgba(25, 29, 28, 0.60)',
         tertiary: 'rgba(206, 217, 216, 1)',
-        textPrimary: '#0D141E',
+        textPrimary: '#fff',
         textSecondary: '#808080',
         textTertiary: 'rgba(153, 153, 153, 1)',
         textQuaternary: '#5C5C5C',
@@ -40,10 +40,10 @@ const themes = {
         inactiveSecondary: 'rgba(104, 106, 106, 1)',
         inactiveTertiary: 'rgba(104, 106, 106, 1)',
     },
-}
+};
 
 const makePalette = (theme: ThemeTypes) => {
-    const palette = themes[theme]
+    const palette = themes[theme];
 
     const base = {
         white: '#FFFFFF',
@@ -240,15 +240,15 @@ const makePalette = (theme: ThemeTypes) => {
         'bubble-cyan': '#B9E0D8',
         'bubble-blue': 'rgba(67, 108, 255, 0.92)',
         'bubble-violet': 'rgba(141, 142, 162, 1)',
-    }
+    };
 
     return {
         ...palette,
         ...base,
-    }
-}
+    };
+};
 
 export const colors = {
     dark: makePalette('dark'),
     light: makePalette('light'),
-}
+};

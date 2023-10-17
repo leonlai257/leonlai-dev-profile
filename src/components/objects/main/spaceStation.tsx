@@ -85,7 +85,7 @@ export const SpaceStation = (props: SpaceStationProps) => {
                     groupProps={{
                         scale: 10,
                     }}
-                    text={'PAST EXPERIENCES'}
+                    text={'WORKS'}
                     hovered={hovered}
                 />
 

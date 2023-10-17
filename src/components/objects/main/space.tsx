@@ -8,9 +8,8 @@ import {
     PlanetProps,
     Planets,
     SpaceStation,
-    WelcomeText,
 } from '@src/components';
-import { useRef } from 'react';
+import { Suspense, useRef } from 'react';
 import * as THREE from 'three';
 import { UnrealBloomPass } from 'three-stdlib';
 
@@ -37,7 +36,7 @@ const planetsConfig: PlanetProps[] = [
         },
         meshProps: {},
         texture: '/textures/Terrestrial.png',
-        text: 'ABOUTME',
+        text: 'ABOUT ME',
     },
     {
         groupProps: {
@@ -106,14 +105,14 @@ export const Space = ({ isTraveling }: { isTraveling: boolean }) => {
 
     return (
         <group ref={space}>
-            {/* <Suspense fallback={null}> */}
-            <Effects disableGamma>
-                <unrealBloomPass threshold={0.7} strength={1} radius={1} />
-            </Effects>
-            {/* </Suspense> */}
+            <Suspense fallback={null}>
+                <Effects disableGamma>
+                    <unrealBloomPass threshold={0.7} strength={1} radius={1} />
+                </Effects>
+            </Suspense>
 
             {/* To be disabled after entering some other instance*/}
-            {hyperLight.map((hyperLight, index) => {
+            {/* {hyperLight.map((hyperLight, index) => {
                 return (
                     <HyperLight
                         key={index}
@@ -146,15 +145,7 @@ export const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                     fade
                     speed={2}
                 />
-            )}
-
-            <WelcomeText
-                title={`Hey, I am Leon Lai, a full stack web developer based in Hong Kong.`}
-                subText={
-                    'Building 3d websites and games is my passion. I am always exploring new technologies and equipped with extensive skills in Frontend, Backend, MR/AR, and more.'
-                }
-                scrollText={'Scroll to learn more...'}
-            />
+            )} */}
         </group>
     );
 };

@@ -18,8 +18,6 @@ export const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
     const { nodes, materials } = useGLTF('/Striker.gltf') as GLTFResult;
 
     const scroll = useScroll();
-    const booster = useRef<THREE.Mesh>(null!);
-    // const materials = useTexture({ map: '/Striker_Blue.png' });
 
     const spaceship = useRef<THREE.Group>(null!);
 

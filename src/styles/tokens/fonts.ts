@@ -1,8 +1,7 @@
 const families = {
-    primary: 'Poppins, sans-serif',
+    primary: 'Noto Sans, sans-serif',
     secondary: 'Inter, sans-serif',
-    mono: 'Roboto Mono, monospace',
-}
+};
 
 const sizes = {
     ss: '0.625rem', // 10px
@@ -17,7 +16,7 @@ const sizes = {
     '5x': '4rem', // 64px
     '6x': '5rem', // 80px
     '7x': '6rem', // 96px
-}
+};
 
 const weights = {
     100: 100,
@@ -29,12 +28,12 @@ const weights = {
     700: 700,
     800: 800,
     900: 900,
-}
+};
 
 const letterSpacings = {
     heading: '-0.01rem',
     body: '0.05rem',
-}
+};
 
 const lineHeights = {
     100: '100%',
@@ -44,6 +43,6 @@ const lineHeights = {
     150: '150%',
     170: '170%',
     200: '200%',
-}
+};
 
-export const fonts = { families, sizes, weights, letterSpacings, lineHeights }
+export const fonts = { families, sizes, weights, letterSpacings, lineHeights };

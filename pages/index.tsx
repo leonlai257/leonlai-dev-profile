@@ -5,9 +5,9 @@ import {
 } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { Layout, Space, SpaceShip } from '@src/components';
+import { AnimationTypes } from '@src/styles/animations';
 import type { NextPage } from 'next';
 import { useRef, useState } from 'react';
-import { AnimationTypes } from '@src/styles/animations';
 
 const MainComponent = () => {
     const camera = useRef();
@@ -22,7 +22,7 @@ const MainComponent = () => {
     });
     return (
         <group>
-            <Layout animation={animation} setAnimation={setAnimation} />
+            {/* <Layout animation={animation} setAnimation={setAnimation} /> */}
             <PerspectiveCamera
                 makeDefault
                 ref={camera}

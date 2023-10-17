@@ -1,9 +1,8 @@
 import { Html } from '@react-three/drei';
 import { HBox, Text } from '@src/components';
 import type { NextPage } from 'next';
-import gsap from 'gsap';
 
-const Experiences: NextPage = () => {
+const Work: NextPage = () => {
     return (
         <Html>
             <HBox>
@@ -13,4 +12,4 @@ const Experiences: NextPage = () => {
     );
 };
 
-export default Experiences;
+export default Work;

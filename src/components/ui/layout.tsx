@@ -11,7 +11,7 @@ export const Layout = (props: {
         <Html
             fullscreen
             zIndexRange={[110, 0]}
-            style={{ pointerEvents: 'none' }}
+            style={{ pointerEvents: 'none', background: '#000' }}
         >
             <Animation
                 onAnimationEnd={() => {

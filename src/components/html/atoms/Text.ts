@@ -1,29 +1,27 @@
-import { styled } from '@src/styles/stitches.config'
+import { styled } from '@src/styles/stitches.config';
 
 export const Text = styled('div', {
-    my: 'auto',
-    textAlign: 'center',
+    textAlign: 'left',
     fontFamily: '$primary',
     color: '$textPrimary',
-    whiteSpace: 'nowrap',
 
     variants: {
         responsive: {
             headline: {
-                text: ['24px', '24px', '32px'],
-                fontWeight: 600,
-            },
-            label: {
-                text: ['11px', '11px', '16px'],
+                text: ['28px', '28px', '36px'],
                 fontWeight: 700,
             },
             title: {
-                text: ['14px', '14px', '22px'],
+                text: ['16px', '16px', '24px'],
+                fontWeight: 600,
+            },
+            label: {
+                text: ['12px', '12px', '16px'],
                 fontWeight: 600,
             },
             body: {
-                text: ['12px', '12px', '14px'],
-                fontWeight: 500,
+                text: ['12px', '12px', '16px'],
+                fontWeight: 400,
             },
         },
         domain: {
@@ -33,7 +31,8 @@ export const Text = styled('div', {
                 fontWeight: 600,
                 fontFamily: '$mono',
                 textTransform: 'none',
-                textShadow: '2px 2px 4px rgba(255, 244, 143, 0.40), -2px -2px 4px rgba(255, 244, 143, 0.40)',
+                textShadow:
+                    '2px 2px 4px rgba(255, 244, 143, 0.40), -2px -2px 4px rgba(255, 244, 143, 0.40)',
             },
         },
         dialog: {
@@ -112,4 +111,4 @@ export const Text = styled('div', {
             },
         },
     },
-})
+});

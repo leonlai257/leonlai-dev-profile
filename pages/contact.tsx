@@ -2,7 +2,7 @@ import { Html } from '@react-three/drei';
 import { HBox, Text } from '@src/components';
 import type { NextPage } from 'next';
 
-const Contacts: NextPage = () => {
+const Contact: NextPage = () => {
     return (
         <Html>
             <HBox>
@@ -12,4 +12,4 @@ const Contacts: NextPage = () => {
     );
 };
 
-export default Contacts;
+export default Contact;

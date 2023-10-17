@@ -1,2 +1,2 @@
 export * from './layout';
-export * from './welcomeText';
+export * from './entrance';
