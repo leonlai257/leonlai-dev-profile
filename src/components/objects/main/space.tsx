@@ -112,7 +112,7 @@ export const Space = ({ isTraveling }: { isTraveling: boolean }) => {
             </Suspense>
 
             {/* To be disabled after entering some other instance*/}
-            {/* {hyperLight.map((hyperLight, index) => {
+            {hyperLight.map((hyperLight, index) => {
                 return (
                     <HyperLight
                         key={index}
@@ -145,7 +145,7 @@ export const Space = ({ isTraveling }: { isTraveling: boolean }) => {
                     fade
                     speed={2}
                 />
-            )} */}
+            )}
         </group>
     );
 };

@@ -1,4 +1,5 @@
 import { HBox, VBox, Text } from '@src/components/html';
+import { gsap } from 'gsap';
 
 interface EntranceProps {
     onEnter: () => void;
@@ -8,7 +9,7 @@ export const Entrance = ({ onEnter }: EntranceProps) => {
     return (
         <HBox
             onClick={onEnter}
-            style={{
+            css={{
                 position: 'absolute',
                 left: 0,
                 top: 0,
@@ -21,6 +22,7 @@ export const Entrance = ({ onEnter }: EntranceProps) => {
                 height: '100%',
                 whiteSpace: 'pre-wrap',
                 backdropFilter: 'blur(4px)',
+                bg: 'transparent',
                 zIndex: 999,
             }}
         >
