@@ -40,9 +40,9 @@ function App() {
                 />
             </Head>
 
-            {router.pathname == '/' && !enter && (
+            {/* {router.pathname == '/' && !enter && (
                 <Entrance onEnter={() => setEnter(true)} />
-            )}
+            )} */}
             <Canvas
                 style={{
                     display: 'block',
