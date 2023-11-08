@@ -3,19 +3,19 @@ import { useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import * as THREE from 'three';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
-import { JetEngine, Rig } from '@src/components';
+import { JetEngine, Rig, Striker } from '@src/components';
 
-type GLTFResult = GLTF & {
-    nodes: {
-        Striker: THREE.Mesh;
-    };
-    materials: {
-        ['Texture']: THREE.MeshStandardMaterial;
-    };
-};
+// type GLTFResult = GLTF & {
+//     nodes: {
+//         Striker: THREE.Mesh;
+//     };
+//     materials: {
+//         ['Texture']: THREE.MeshStandardMaterial;
+//     };
+// };
 
 export const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
-    const { nodes, materials } = useGLTF('/Striker.gltf') as GLTFResult;
+    // const { nodes, materials } = useGLTF('/Striker.gltf') as GLTFResult;
 
     const scroll = useScroll();
 
@@ -33,14 +33,15 @@ export const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
     return (
         <Rig isTraveling={isTraveling}>
             <group ref={spaceship} dispose={null}>
-                <mesh
+                <Striker />
+                {/* <mesh
                     receiveShadow
                     rotation={[0, Math.PI, 0]}
                     geometry={(nodes['Striker'] as THREE.Mesh).geometry}
                     material={materials.Texture}
                 >
-                    {/* <meshStandardMaterial {...materials} /> */}
-                </mesh>
+                    <meshStandardMaterial {...materials} />
+                </mesh> */}
                 <group>
                     <group
                         position={[1.14, -0.24, 2.8]}
