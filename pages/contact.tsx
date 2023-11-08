@@ -4,60 +4,60 @@ import type { NextPage } from 'next';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
-const Word = ({
-    children,
-    originalColor,
-    transitionColor,
-    ...props
-}: {
-    children: ReactNode;
-    originalColor: string;
-    transitionColor?: string;
-    outlineWidth?: number;
-    outlineColor?: string;
-}) => {
-    const color = new THREE.Color();
-    const ref = useRef<any>();
-    const [hovered, setHovered] = useState(false);
-    const over = (e: any) => (e.stopPropagation(), setHovered(true));
-    const out = () => setHovered(false);
+// const Word = ({
+//     children,
+//     originalColor,
+//     transitionColor,
+//     ...props
+// }: {
+//     children: ReactNode;
+//     originalColor: string;
+//     transitionColor?: string;
+//     outlineWidth?: number;
+//     outlineColor?: string;
+// }) => {
+//     const color = new THREE.Color();
+//     const ref = useRef<any>();
+//     const [hovered, setHovered] = useState(false);
+//     const over = (e: any) => (e.stopPropagation(), setHovered(true));
+//     const out = () => setHovered(false);
 
-    // Change the mouse cursor on hover
-    useEffect(() => {
-        if (hovered) {
-            document.body.style.cursor = 'pointer';
-        } else {
-            document.body.style.cursor = 'auto';
-        }
-    }, [hovered]);
-    // Tie component to the render-loop
-    useFrame(({ camera }) => {
-        // Make text face the camera
-        ref.current.quaternion.copy(camera.quaternion);
-        // Animate font color
-        ref.current.material.color.lerp(
-            color.set(
-                hovered
-                    ? transitionColor
-                        ? transitionColor
-                        : originalColor
-                    : originalColor
-            ),
-            0.1
-        );
-    });
+//     // Change the mouse cursor on hover
+//     useEffect(() => {
+//         if (hovered) {
+//             document.body.style.cursor = 'pointer';
+//         } else {
+//             document.body.style.cursor = 'auto';
+//         }
+//     }, [hovered]);
+//     // Tie component to the render-loop
+//     useFrame(({ camera }) => {
+//         // Make text face the camera
+//         ref.current.quaternion.copy(camera.quaternion);
+//         // Animate font color
+//         ref.current.material.color.lerp(
+//             color.set(
+//                 hovered
+//                     ? transitionColor
+//                         ? transitionColor
+//                         : originalColor
+//                     : originalColor
+//             ),
+//             0.1
+//         );
+//     });
 
-    return (
-        <Text
-            ref={ref}
-            onPointerOver={over}
-            onPointerOut={out}
-            onClick={() => console.log('clicked')}
-            {...props}
-            children={children}
-        />
-    );
-};
+//     return (
+//         <Text
+//             ref={ref}
+//             onPointerOver={over}
+//             onPointerOut={out}
+//             onClick={() => console.log('clicked')}
+//             {...props}
+//             children={children}
+//         />
+//     );
+// };
 
 const Contact: NextPage = () => {
     const primaryColor = '#8294C4';
@@ -92,12 +92,12 @@ const Contact: NextPage = () => {
                 >
                     Leon Lai
                 </Text> */}
-                <Word
+                {/* <Word
                     originalColor={primaryColor}
                     transitionColor={secondaryColor}
                 >
-                    <>Leon Lai</>
-                </Word>
+                    Leon Lai
+                </Word> */}
                 <group position={[0.05, 0.05, 0.00001]}>
                     <Text
                         color={quaternaryColor}
