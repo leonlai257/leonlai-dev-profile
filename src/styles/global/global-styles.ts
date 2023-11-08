@@ -1,4 +1,4 @@
-import { globalCss } from '../stitches.config'
+import { globalCss } from '../stitches.config';
 
 export const globalStyles = globalCss({
     '@font-face': [
@@ -26,40 +26,13 @@ export const globalStyles = globalCss({
         margin: 0,
         padding: 0,
         boxSizing: 'border-box',
-    },
-    'html, body': {
-        fontFamily: '$body',
-
-        /* For removing the arrow button in number input in Chrome, Safari, Edge, Opera */
-        'input::-webkit-outer-spin-button': {
-            '-webkit-appearance': 'none',
-            margin: 0,
-        },
-        'input::-webkit-inner-spin-button': {
-            '-webkit-appearance': 'none',
-            margin: 0,
-        },
-        /* For removing the arrow button in number input in Firefox */
-        'input[type=number]': {
-            '-moz-appearance': 'textfield',
-        },
-
         /* For removing the white scroll bar */
         '::-webkit-scrollbar': {
             width: '0px',
         },
-
-        // WebkitFontSmoothing: 'antialiased',
-        // '&::-webkit-scrollbar': {
-        //     backgroundColor: 'transparent',
-        //     width: 4,
-        // },
-        // '&::-webkit-scrollbar-track': {
-        //     backgroundColor: 'transparent',
-        // },
-        // '&::-webkit-scrollbar-thumb': {
-        //     backgroundColor: '$brand-primary-09',
-        // },
+    },
+    'html, body': {
+        fontFamily: '$body',
     },
     a: {
         color: 'inherit',
@@ -92,4 +65,4 @@ export const globalStyles = globalCss({
         width: '6px !important',
         opacity: '0.8 !important',
     },
-})
+});

@@ -1,14 +1,16 @@
 import { Canvas } from '@react-three/fiber';
+import { Entrance } from '@src/components';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { Route, Switch } from 'wouter';
 import Main from '.';
 import About from './about';
 import Contact from './contact';
 import Work from './work';
-import { Entrance } from '@src/components';
-import { useState } from 'react';
 
 function App() {
+    const router = useRouter();
     const [enter, setEnter] = useState(false);
 
     return (
@@ -38,8 +40,15 @@ function App() {
                 />
             </Head>
 
-            {enter || <Entrance onEnter={() => setEnter(true)} />}
-            <Canvas>
+            {router.pathname == '/' && !enter && (
+                <Entrance onEnter={() => setEnter(true)} />
+            )}
+            <Canvas
+                style={{
+                    display: 'block',
+                    background: '#000',
+                }}
+            >
                 <Switch>
                     <Route path="/">
                         <Main />

@@ -25,13 +25,12 @@ const MainComponent = () => {
             {/* <Layout animation={animation} setAnimation={setAnimation} /> */}
             <PerspectiveCamera
                 makeDefault
-                ref={camera}
+                // ref={camera}
                 fov={60}
                 near={0.1}
                 far={1000}
                 position={[-80, 0, 0]}
                 rotation={[0, Math.PI + Math.PI / 2, 0]}
-                getObjectsByProperty={undefined}
             >
                 <SpaceShip isTraveling={isTraveling} />
             </PerspectiveCamera>
