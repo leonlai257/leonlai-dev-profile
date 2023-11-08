@@ -96,7 +96,7 @@ const Contact: NextPage = () => {
                     originalColor={primaryColor}
                     transitionColor={secondaryColor}
                 >
-                    Leon Lai
+                    <>Leon Lai</>
                 </Word>
                 <group position={[0.05, 0.05, 0.00001]}>
                     <Text
