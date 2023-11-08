@@ -67,11 +67,7 @@ export const TextRing = ({
             scale={1.2}
             {...groupProps}
         >
-            <Cylinder
-                args={cylArgs}
-                getObjectsByProperty={undefined}
-                getVertexPosition={undefined}
-            >
+            <Cylinder args={cylArgs}>
                 <meshStandardMaterial
                     transparent
                     blending={THREE.AdditiveBlending}
@@ -92,11 +88,7 @@ export const TextRing = ({
                     />
                 </meshStandardMaterial>
             </Cylinder>
-            <Cylinder
-                args={cylArgs}
-                getObjectsByProperty={undefined}
-                getVertexPosition={undefined}
-            >
+            <Cylinder>
                 <meshStandardMaterial
                     blending={THREE.AdditiveBlending}
                     attach="material"

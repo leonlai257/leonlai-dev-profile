@@ -63,21 +63,10 @@ export const SpaceStation = (props: SpaceStationProps) => {
                 onPointerOut={(e) => setHoverStatus(false)}
             >
                 <group position={[0, 0, 0.6]}>
-                    <Plane
-                        scale={[0.92, -0.9, 0.9]}
-                        args={defaultBoxArgs}
-                        getObjectsByProperty={undefined}
-                        getVertexPosition={undefined}
-                    >
+                    <Plane scale={[0.92, -0.9, 0.9]} args={defaultBoxArgs}>
                         <meshBasicMaterial color="white" />
                     </Plane>
-                    <Text
-                        position={[0, 0, 0.1]}
-                        scale={3}
-                        color="black"
-                        getObjectsByProperty={undefined}
-                        getVertexPosition={undefined}
-                    >
+                    <Text position={[0, 0, 0.1]} scale={3} color="black">
                         LEON LAI
                     </Text>
                 </group>
@@ -89,17 +78,11 @@ export const SpaceStation = (props: SpaceStationProps) => {
                     hovered={hovered}
                 />
 
-                <Box
-                    args={defaultBoxArgs}
-                    getObjectsByProperty={undefined}
-                    getVertexPosition={undefined}
-                >
+                <Box args={defaultBoxArgs}>
                     <meshBasicMaterial color="black" />
                 </Box>
                 <Box
                     args={defaultBoxArgs}
-                    getObjectsByProperty={undefined}
-                    getVertexPosition={undefined}
                     position={[
                         0,
                         defaultBoxArgs[1]! / -2,
