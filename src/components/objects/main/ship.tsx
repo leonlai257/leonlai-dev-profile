@@ -15,8 +15,6 @@ import { JetEngine, Rig, Striker } from '@src/components';
 // };
 
 export const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
-    // const { nodes, materials } = useGLTF('/Striker.gltf') as GLTFResult;
-
     const scroll = useScroll();
 
     const spaceship = useRef<THREE.Group>(null!);
@@ -33,15 +31,7 @@ export const SpaceShip = ({ isTraveling }: { isTraveling: boolean }) => {
     return (
         <Rig isTraveling={isTraveling}>
             <group ref={spaceship} dispose={null}>
-                <Striker />
-                {/* <mesh
-                    receiveShadow
-                    rotation={[0, Math.PI, 0]}
-                    geometry={(nodes['Striker'] as THREE.Mesh).geometry}
-                    material={materials.Texture}
-                >
-                    <meshStandardMaterial {...materials} />
-                </mesh> */}
+                <Striker rotation={[0, Math.PI, 0]} />
                 <group>
                     <group
                         position={[1.14, -0.24, 2.8]}
