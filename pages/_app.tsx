@@ -43,12 +43,10 @@ function App() {
             {/* {router.pathname == '/' && !enter && (
                 <Entrance onEnter={() => setEnter(true)} />
             )} */}
-            <Canvas
-                style={{
-                    display: 'block',
-                    background: '#000',
-                }}
-            >
+            <Canvas>
+                <ambientLight />
+                <pointLight position={[0, 10, 0]} intensity={1} castShadow />
+                <pointLight position={[0, -5, 0]} intensity={1} />
                 <Switch>
                     <Route path="/">
                         <Main />
