@@ -2,16 +2,22 @@ import { Canvas } from '@react-three/fiber';
 import { Entrance } from '@src/components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Switch } from 'wouter';
 import Main from '.';
 import About from './about';
 import Contact from './contact';
 import Work from './work';
+import { globalStyles } from '@src/styles';
+import type { AppProps } from 'next/app';
 
-function App() {
+export default function App({ pageProps }: AppProps) {
     const router = useRouter();
     const [enter, setEnter] = useState(false);
+
+    useEffect(() => {
+        globalStyles();
+    }, []);
 
     return (
         <div
@@ -40,30 +46,28 @@ function App() {
                 />
             </Head>
 
-            {/* {router.pathname == '/' && !enter && (
-                <Entrance onEnter={() => setEnter(true)} />
-            )} */}
             <Canvas>
                 <ambientLight />
                 <pointLight position={[0, 10, 0]} intensity={1} castShadow />
                 <pointLight position={[0, -5, 0]} intensity={1} />
                 <Switch>
                     <Route path="/">
-                        <Main />
+                        <Main {...pageProps} />
                     </Route>
                     <Route path="/work">
-                        <Work />
+                        <Work {...pageProps} />
                     </Route>
                     <Route path="/about">
-                        <About />
+                        <About {...pageProps} />
                     </Route>
                     <Route path="/contact">
-                        <Contact />
+                        <Contact {...pageProps} />
                     </Route>
                 </Switch>
             </Canvas>
+            {router.pathname == '/' && !enter && (
+                <Entrance onEnter={() => setEnter(true)} />
+            )}
         </div>
     );
 }
-
-export default App;

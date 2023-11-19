@@ -42,8 +42,6 @@ const MainComponent = () => {
 const Main: NextPage = () => {
     return (
         <group>
-            <ambientLight />
-            <directionalLight position={[0, 0, 0]} intensity={1} />
             <ScrollControls
                 pages={2}
                 distance={1}
