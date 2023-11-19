@@ -1,5 +1,5 @@
 import { Box } from '@react-three/drei';
-import { styled } from '@src/stitches.config';
+import { styled } from '@src/styles/stitches.config';
 
 export const Fallback = styled(Box, {
     position: 'absolute',
