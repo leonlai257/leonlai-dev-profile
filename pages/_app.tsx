@@ -52,7 +52,8 @@ export default function App({ pageProps }: AppProps) {
                 <pointLight position={[0, -5, 0]} intensity={1} />
                 <Switch>
                     <Route path="/">
-                        <Main {...pageProps} />
+                        <Contact {...pageProps} />
+                        {/* <Main {...pageProps} /> */}
                     </Route>
                     <Route path="/work">
                         <Work {...pageProps} />
@@ -65,9 +66,9 @@ export default function App({ pageProps }: AppProps) {
                     </Route>
                 </Switch>
             </Canvas>
-            {router.pathname == '/' && !enter && (
+            {/* {router.pathname == '/' && !enter && (
                 <Entrance onEnter={() => setEnter(true)} />
-            )}
+            )} */}
         </div>
     );
 }
