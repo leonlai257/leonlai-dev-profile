@@ -1,15 +1,14 @@
 import { Canvas } from '@react-three/fiber';
-import { Entrance } from '@src/components';
+import { globalStyles } from '@src/styles';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'wouter';
-import Main from '.';
 import About from './about';
+import '../styles/globals.css';
 import Contact from './contact';
 import Work from './work';
-import { globalStyles } from '@src/styles';
-import type { AppProps } from 'next/app';
 
 export default function App({ pageProps }: AppProps) {
     const router = useRouter();
