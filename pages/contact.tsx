@@ -128,11 +128,7 @@ const Contact = () => {
                         </group>
                     </group>
                 </Box>
-                <PerspectiveCamera
-                    makeDefault
-                    near={0.1}
-                    far={1000}
-                ></PerspectiveCamera>
+                <PerspectiveCamera near={0.1} far={1000} />
 
                 <OrbitControls enableZoom={true} />
             </Suspense>

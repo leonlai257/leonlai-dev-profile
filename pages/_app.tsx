@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'wouter';
 import About from './about';
-import '../styles/globals.css';
 import Contact from './contact';
 import Work from './work';
 
